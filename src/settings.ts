@@ -1,3 +1,6 @@
+import type { ImageMetadata } from 'astro';
+
+
 export const SITE_TITLE = '网站导航';
 export const SITE_DESCRIPTION = '在线网址导航';
 export const SITE_FAVICON = '/images/favicon.png';
@@ -12,11 +15,13 @@ export const SITE_LOGO_DARK = '/images/logo.png';
 
 import contentBg from 'src/assets/好朋友.png';
 import contentBgDark from 'src/assets/tree.jpg';
+import searchBg from 'src/assets/好朋友.png';
+import searchBgDark from 'src/assets/tree.jpg';
 
-export const SEARCH_BG = '';
-export const CONTENT_BG = contentBg;
-export const SEARCH_BG_DARK = '';
-export const CONTENT_BG_DARK = contentBgDark;
+export const SEARCH_BG: ImageMetadata | '' = ''; 
+export const SEARCH_BG_DARK: ImageMetadata | '' = '';
+export const CONTENT_BG: ImageMetadata = contentBg;
+export const CONTENT_BG_DARK: ImageMetadata = contentBgDark;
 
 // 背景毛玻璃强度（单位：px）
 export const SEARCH_BG_BLUR = 0;
