@@ -26,8 +26,6 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
   <link rel="shortcut icon" href={SITE_FAVICON} />
   <meta name="keywords" content={SITE_TITLE} />
   <meta name="description" content={SITE_DESCRIPTION} />
-  {isImageMeta(CONTENT_BG) && (<link rel="preload" as="image" href={CONTENT_BG.src} />)}
-  {isImageMeta(CONTENT_BG_DARK) && (<link rel="preload" as="image" href={CONTENT_BG_DARK.src} />)}
 
   <style>
     html, body{background-color:#f9f9f9}
@@ -196,7 +194,7 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
             src={SEARCH_BG}
             alt="搜索背景（浅色模式)"
             format="webp"
-            quality={70}
+            quality={100}
             width={1920}
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', visibility: 'visible' }}
           />
@@ -208,7 +206,7 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
             src={darkSearchBg}
             alt="搜索背景（深色模式)"
             format="webp"
-            quality={70}
+            quality={100}
             width={1920}
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', visibility: 'visible' }}
           />
