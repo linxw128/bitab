@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, sharpImageService } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 import svelte from '@astrojs/svelte';
@@ -16,6 +16,9 @@ export default defineConfig({
       }
     })
   ],
+  image: {
+    service: sharpImageService()
+  },
   output: 'static',
   adapter: vercel()
 });
