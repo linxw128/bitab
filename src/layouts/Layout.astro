@@ -7,15 +7,11 @@ import { SITE_DESCRIPTION, SITE_FAVICON, SITE_TITLE, SEARCH_BG, CONTENT_BG, SEAR
 import { LIGHT_MODE, DARK_MODE, AUTO_MODE, DEFAULT_THEME } from '../constants/constants';
 import '../styles/global.css';
 import '../styles/external.css';
-// 改用内联 ES 模块导入，让 Vite 在生产构建中正确转换为 JS
 import SearchModal from '@/components/Utils/SearchModal.astro';
 ---
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  
-  
-  
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,15 +149,25 @@ import SearchModal from '@/components/Utils/SearchModal.astro';
 <SearchModal />
 <body class="page-loading">
   {CONTENT_BG ? (
-    <img id="global-bg-light" class="global-bg-layer" src={CONTENT_BG} alt="" />
-  ) : (
-    <div id="global-bg-light" class="global-bg-layer"></div>
-  )}
-  {(CONTENT_BG_DARK || CONTENT_BG) ? (
-    <img id="global-bg-dark" class="global-bg-layer" src={(CONTENT_BG_DARK || CONTENT_BG)} alt="" />
-  ) : (
-    <div id="global-bg-dark" class="global-bg-layer"></div>
-  )}
+  <img 
+    id="global-bg-light" 
+    class="global-bg-layer" 
+    src={CONTENT_BG.src} 
+    alt="" 
+  />
+) : (
+  <div id="global-bg-light" class="global-bg-layer"></div>
+)}
+{(CONTENT_BG_DARK || CONTENT_BG) ? (
+  <img 
+    id="global-bg-dark" 
+    class="global-bg-layer" 
+    src={(CONTENT_BG_DARK || CONTENT_BG).src} 
+    alt="" 
+  />
+) : (
+  <div id="global-bg-dark" class="global-bg-layer"></div>
+)}
 <div class="page-container">
   <Sidebar />
   <div class="main-content flex-fill"> 

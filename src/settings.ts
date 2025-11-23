@@ -10,10 +10,13 @@ export const SITE_LOGO_DARK = '/images/logo.png';
 // - 仅 CONTENT_BG ：整页全屏图
 // - 夜间模式同理，若配置了 _DARK 变量则使用夜间图，否则自动回退到浅色图
 
+import contentBg from 'src/assets/好朋友.png';
+import contentBgDark from 'src/assets/tree.jpg';
+
 export const SEARCH_BG = '';
-export const CONTENT_BG = 'src/assets/好朋友.png';
+export const CONTENT_BG = contentBg;
 export const SEARCH_BG_DARK = '';
-export const CONTENT_BG_DARK = 'src/assets/tree.jpg';
+export const CONTENT_BG_DARK = contentBgDark;
 
 // 背景毛玻璃强度（单位：px）
 export const SEARCH_BG_BLUR = 0;
