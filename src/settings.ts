@@ -11,9 +11,9 @@ export const SITE_LOGO_DARK = '/images/logo.png';
 // - 夜间模式同理，若配置了 _DARK 变量则使用夜间图，否则自动回退到浅色图
 
 export const SEARCH_BG = '';
-export const CONTENT_BG = 'http://gcore.jsdelivr.net/gh/Keduoli03/My_img@main/image/好朋友.png';
+export const CONTENT_BG = 'src/assets/好朋友.png';
 export const SEARCH_BG_DARK = '';
-export const CONTENT_BG_DARK = 'http://gcore.jsdelivr.net/gh/Keduoli03/My_img@main/image/tree.jpg';
+export const CONTENT_BG_DARK = 'src/assets/tree.jpg';
 
 // 背景毛玻璃强度（单位：px）
 export const SEARCH_BG_BLUR = 0;

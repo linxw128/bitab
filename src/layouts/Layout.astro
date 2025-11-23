@@ -35,7 +35,7 @@ import SearchModal from '@/components/Utils/SearchModal.astro';
     body.theme-init{transition:none!important}
     :root{--sidebar-blur:12px;--sidebar-border-color:rgba(0,0,0,.06);--sidebar-bg-color:linear-gradient(to bottom, rgba(255,255,255,.65), rgba(255,255,255,.45));--sidebar-popup-bg-color:linear-gradient(to bottom, rgba(245,245,245,.75), rgba(245,245,245,.64));--sidebar-text-color:#20272b;--sidebar-title-color:#1b2226;--sidebar-hover-bg:rgba(0,0,0,.06);--sidebar-active-bg:rgba(0,0,0,.06);--sidebar-submenu-bg:rgba(0,0,0,.05)}
     /* 全局内容背景分层 */
-    .global-bg-layer{position:fixed;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;pointer-events:none;opacity:0;transition:opacity .3s;filter:blur(var(--content-bg-blur,0px))}
+    .global-bg-layer{position:fixed;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;pointer-events:none;opacity:0;transition:opacity .3s;filter:blur(var(--content-bg-blur,0px));width:100%;height:100%;object-fit:cover}
     body.io-grey-mode #global-bg-light{opacity:1}
     body.io-grey-mode #global-bg-dark{opacity:0}
     body.io-black-mode #global-bg-light{opacity:0}
@@ -152,8 +152,16 @@ import SearchModal from '@/components/Utils/SearchModal.astro';
 </head>
 <SearchModal />
 <body class="page-loading">
-  <div id="global-bg-light" class="global-bg-layer" style={`background-image: ${CONTENT_BG ? "url('"+CONTENT_BG+"')" : 'none'}`}></div>
-  <div id="global-bg-dark" class="global-bg-layer" style={`background-image: ${ (CONTENT_BG_DARK || CONTENT_BG) ? "url('"+(CONTENT_BG_DARK || CONTENT_BG)+"')" : 'none'}`}></div>
+  {CONTENT_BG ? (
+    <img id="global-bg-light" class="global-bg-layer" src={CONTENT_BG} alt="" />
+  ) : (
+    <div id="global-bg-light" class="global-bg-layer"></div>
+  )}
+  {(CONTENT_BG_DARK || CONTENT_BG) ? (
+    <img id="global-bg-dark" class="global-bg-layer" src={(CONTENT_BG_DARK || CONTENT_BG)} alt="" />
+  ) : (
+    <div id="global-bg-dark" class="global-bg-layer"></div>
+  )}
 <div class="page-container">
   <Sidebar />
   <div class="main-content flex-fill"> 
