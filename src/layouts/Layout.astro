@@ -26,6 +26,8 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
   <link rel="shortcut icon" href={SITE_FAVICON} />
   <meta name="keywords" content={SITE_TITLE} />
   <meta name="description" content={SITE_DESCRIPTION} />
+  {isImageMeta(CONTENT_BG) && (<link rel="preload" as="image" href={CONTENT_BG.src} />)}
+  {isImageMeta(CONTENT_BG_DARK) && (<link rel="preload" as="image" href={CONTENT_BG_DARK.src} />)}
 
   <style>
     html, body{background-color:#f9f9f9}
