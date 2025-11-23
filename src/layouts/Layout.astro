@@ -154,24 +154,24 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
 <SearchModal />
 <body class="page-loading io-grey-mode">
   {isImageMeta(CONTENT_BG) ? (
-    <Image 
-      id="global-bg-light" 
-      class="global-bg-layer" 
-      src={CONTENT_BG} 
-      alt="" 
-      style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-    />
+    <div id="global-bg-light" class="global-bg-layer">
+      <Image 
+        src={CONTENT_BG} 
+        alt="" 
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+    </div>
   ) : (
     <div id="global-bg-light" class="global-bg-layer"></div>
   )}
   {contentDark ? (
-    <Image 
-      id="global-bg-dark" 
-      class="global-bg-layer" 
-      src={contentDark} 
-      alt="" 
-      style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-    />
+    <div id="global-bg-dark" class="global-bg-layer">
+      <Image 
+        src={contentDark} 
+        alt="" 
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+    </div>
   ) : (
     <div id="global-bg-dark" class="global-bg-layer"></div>
   )}
