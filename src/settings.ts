@@ -3,10 +3,10 @@ import type { ImageMetadata } from 'astro';
 
 export const SITE_TITLE = '网站导航';
 export const SITE_DESCRIPTION = '在线网址导航';
-export const SITE_FAVICON = '/images/favicon.png';
+export const SITE_FAVICON = '/images/favicon-48.png';
 // 明暗模式下的logo
-export const SITE_LOGO = '/images/logo.png';
-export const SITE_LOGO_DARK = '/images/logo.png';
+export const SITE_LOGO = '/images/favicon-192.png';
+export const SITE_LOGO_DARK = '/images/favicon-192.png';
 
 // - 仅 SEARCH_BG ：顶部有图，下面保留网格
 // - SEARCH_BG + CONTENT_BG ：顶部与内容各自用图，不显示网格
