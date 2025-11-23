@@ -154,7 +154,7 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
 <SearchModal />
 <body class="page-loading io-grey-mode">
   {isImageMeta(CONTENT_BG) ? (
-    <div id="global-bg-light" class="global-bg-layer" style={{ backgroundImage: `url('${CONTENT_BG.src}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div id="global-bg-light" class="global-bg-layer">
       <Image 
         src={CONTENT_BG} 
         alt="" 
@@ -166,7 +166,7 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
     <div id="global-bg-light" class="global-bg-layer"></div>
   )}
   {contentDark ? (
-    <div id="global-bg-dark" class="global-bg-layer" style={{ backgroundImage: `url('${contentDark.src}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div id="global-bg-dark" class="global-bg-layer">
       <Image 
         src={contentDark} 
         alt="" 
