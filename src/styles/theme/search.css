@@ -79,7 +79,8 @@
 .search-group-modal{display:none;padding-left:75px}
 .s-current .search-type{padding-left:0;display:block}
 .s-current{display:block}
-.search-smart-tips{position:absolute;z-index:20;width:100%;overflow:hidden}
+.search-smart-tips{position:absolute;z-index:1100;width:100%;overflow:visible}
 .search-smart-tips ul{padding:10px 0;margin:0}
 .search-smart-tips ul li{line-height:30px;font-size:14px;padding:0 25px;cursor:pointer;list-style:none;transition:.3s}
 .search-smart-tips ul li:hover,.search-smart-tips ul li.current{background-color:rgba(130,130,130,.5)}
+.search-smart-tips ul li span.local{display:inline-block;height:20px;line-height:20px;padding:0 8px;font-size:12px;background:#e5e5e5;border-radius:10px;color:#999;margin-right:10px;width:auto}

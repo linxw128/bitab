@@ -1,5 +1,7 @@
 let input: HTMLInputElement | null = null;
 let list: HTMLUListElement | null = null;
+let mInput: HTMLInputElement | null = null;
+let mList: HTMLUListElement | null = null;
 let currentSearch = '';
 const STORE_KEY = 'selectedSearchEngineId';
 const STORE_GROUP_KEY = 'selectedSearchGroupId';
@@ -90,18 +92,24 @@ function openSearch(q: string) {
 function init(): boolean {
   input = document.getElementById('search-text') as HTMLInputElement | null;
   list = document.getElementById('word') as HTMLUListElement | null;
+  mInput = document.getElementById('m_search-text') as HTMLInputElement | null;
+  mList = document.getElementById('m_word') as HTMLUListElement | null;
   const forms = document.querySelectorAll('.super-search-fm') as NodeListOf<HTMLFormElement>;
   const engineRadios = document.querySelectorAll('input[name="type"]') as NodeListOf<HTMLInputElement>;
   const modalRadios = document.querySelectorAll('input[name="type2"]') as NodeListOf<HTMLInputElement>;
   if (!forms.length) return false;
   try {
-    const saved = localStorage.getItem(STORE_KEY);
-    if (saved) {
-      const el = document.getElementById(saved) as HTMLInputElement | null;
-      if (el) el.checked = true;
+    const defaultChecked = document.querySelector('#search-bg input[name="type"][checked]') as HTMLInputElement | null;
+    const isDefaultLocal = !!(defaultChecked && defaultChecked.id === 'type-local');
+    if (!isDefaultLocal) {
+      const saved = localStorage.getItem(STORE_KEY);
+      if (saved) {
+        const el = document.getElementById(saved) as HTMLInputElement | null;
+        if (el) el.checked = true;
+      }
+      const savedGroup = localStorage.getItem(STORE_GROUP_KEY) || '';
+      if (savedGroup) applyGroupAndRestoreEngine(savedGroup);
     }
-    const savedGroup = localStorage.getItem(STORE_GROUP_KEY) || '';
-    if (savedGroup) applyGroupAndRestoreEngine(savedGroup);
   } catch {}
   updatePlaceholderAndEngine();
   if (engineRadios.length) engineRadios.forEach(r => r.addEventListener('change', updatePlaceholderAndEngine));
@@ -119,6 +127,16 @@ function init(): boolean {
     if (ph && mInput) mInput.placeholder = ph;
     const mForm = document.querySelector('#search-modal .super-search-fm') as HTMLFormElement | null;
     if (mForm && checked) mForm.action = checked.value || '';
+    const val = (mInput?.value.trim() || '');
+    if (val) {
+      const isLocal = !!(checked && checked.id === 'm_type-local');
+      if (!isLocal) fetchSuggestionsTo(val, mList);
+      else {
+        if (mList) mList.style.display = 'none';
+        const card = mList?.parentElement as HTMLElement | null;
+        if (card) card.style.display = 'none';
+      }
+    }
   }));
   forms.forEach(f => {
     f.addEventListener('submit', (e) => {
@@ -143,7 +161,33 @@ function init(): boolean {
         if (list) list.style.display = 'none';
         return;
       }
+      const checked = document.querySelector('#search-bg input[name="type"]:checked') as HTMLInputElement | null;
+      if (checked && checked.id === 'type-local') {
+        if (list) list.style.display = 'none';
+        return;
+      }
       fetchSuggestions(q);
+    });
+  }
+  if (mInput) {
+    const field = mInput as HTMLInputElement;
+    field.addEventListener('keyup', () => {
+      const q = field.value.trim();
+      if (!q) {
+        if (mList) mList.style.display = 'none';
+        const card = mList?.parentElement as HTMLElement | null;
+        if (card) card.style.display = 'none';
+        return;
+      }
+      const checked = document.querySelector('#search-modal input[name="type2"]:checked') as HTMLInputElement | null;
+      const isLocal = !!(checked && checked.id === 'm_type-local');
+      if (isLocal) {
+        if (mList) mList.style.display = 'none';
+        const card = mList?.parentElement as HTMLElement | null;
+        if (card) card.style.display = 'none';
+        return;
+      }
+      fetchSuggestionsTo(q, mList);
     });
   }
   // Fallback: 若仍无选中项，默认切换到首个分类
@@ -180,6 +224,25 @@ function fetchSuggestions(q: string) {
   };
   document.head.appendChild(script);
 }
+function fetchSuggestionsTo(q: string, target: HTMLUListElement | null) {
+  const cbName = `__bdSugCb_${Date.now()}_${jsonpSeq++}`;
+  const script = document.createElement('script');
+  (window as any)[cbName] = (res: any) => {
+    try {
+      renderSuggestionsTo(target, Array.isArray(res?.s) ? res.s : []);
+    } finally {
+      delete (window as any)[cbName];
+      script.remove();
+    }
+  };
+  script.src = `https://suggestion.baidu.com/su?wd=${encodeURIComponent(q)}&cb=${cbName}`;
+  script.onerror = () => {
+    renderSuggestionsTo(target, []);
+    delete (window as any)[cbName];
+    script.remove();
+  };
+  document.head.appendChild(script);
+}
 function renderSuggestions(items: string[]) {
   if (!list) return;
   list.innerHTML = '';
@@ -203,6 +266,32 @@ function renderSuggestions(items: string[]) {
     list.appendChild(li);
   });
 }
+function renderSuggestionsTo(target: HTMLUListElement | null, items: string[]) {
+  if (!target) return;
+  target.innerHTML = '';
+  const card = target.parentElement as HTMLElement | null;
+  if (!items || !items.length) {
+    target.style.display = 'none';
+    if (card) card.style.display = 'none';
+    return;
+  }
+  target.style.display = 'block';
+  items.forEach((text, i) => {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    span.textContent = String(i + 1);
+    li.appendChild(span);
+    li.appendChild(document.createTextNode(text));
+    li.addEventListener('click', () => {
+      const field = mInput as HTMLInputElement | null;
+      if (field) field.value = text;
+      target.style.display = 'none';
+      openSearch(text);
+    });
+    target.appendChild(li);
+  });
+  if (card) card.style.display = 'block';
+}
 // input keyup is attached in init
 document.addEventListener('click', (e) => {
   const target = e.target as Element | null;
@@ -210,4 +299,12 @@ document.addEventListener('click', (e) => {
   if (list && container && target && container.contains(target)) {
     list.style.display = 'none';
   }
+});
+const modalEl = document.getElementById('search-modal') as HTMLElement | null;
+if (modalEl) modalEl.addEventListener('shown.bs.modal', () => {
+  const q = (mInput?.value.trim() || '');
+  if (!q) return;
+  const checked = document.querySelector('#search-modal input[name="type2"]:checked') as HTMLInputElement | null;
+  const isLocal = !!(checked && checked.id === 'm_type-local');
+  if (!isLocal) fetchSuggestionsTo(q, mList);
 });

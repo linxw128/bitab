@@ -2,6 +2,7 @@
 import { searchGroups, defaultSearch } from '../data/searchConfig';
 import { Icon } from 'astro-icon/components';
 const defaultGroupId = (searchGroups.find(g => g.engines.some(e => e.id === defaultSearch.id))?.id) || (searchGroups[0]?.id || '');
+import allSites from '../data/sites/all.js';
 ---
 <div id="search" class="s-search mx-auto">
       <!-- 搜索分类标签 -->
@@ -66,11 +67,13 @@ const defaultGroupId = (searchGroups.find(g => g.engines.some(e => e.id === defa
         ))}
       </div>
       <!-- 搜索热词 -->
-      <div class="card search-smart-tips search-hot-text">
+      <div id="smart-card" class="card search-smart-tips search-hot-text" style="display:none">
         <ul id="word" style="display: none"></ul>
+        <ul id="local-word" style="display: none"></ul>
       </div>
 </div>
-<script is:inline>
+<script type="application/json" id="local-sites-json">{JSON.stringify(allSites.map(s => ({ title: s.title || '', url: s.url || '', description: s.description || '', subId: s.subId || '' })))}</script>
+<script is:inline define:vars={{allSites}}>
   (function(){
     var STORE_KEY = 'selectedSearchEngineId';
     var STORE_GROUP_KEY = 'selectedSearchGroupId';
@@ -115,6 +118,21 @@ const defaultGroupId = (searchGroups.find(g => g.engines.some(e => e.id === defa
       if(checked && form){ form.action = (checked).value || form.action; }
       var ph = checked ? (checked).getAttribute('data-placeholder') || '' : '';
       if(ph && input){ (input).placeholder = ph; }
+      var isLocal = checked && (checked).id === 'type-local';
+      var netTips = document.getElementById('word');
+      var localTips = document.getElementById('local-word');
+      var smartCard = document.getElementById('smart-card');
+      var root = document.getElementById('search');
+      if(root){ root.classList.toggle('local-mode', !!isLocal); }
+      var netLen = (netTips && netTips.children) ? netTips.children.length : 0;
+      var localLen = (localTips && localTips.children) ? localTips.children.length : 0;
+      if(netTips){ netTips.style.display = isLocal ? 'none' : (netLen ? 'block' : 'none'); }
+      if(localTips){ localTips.style.display = localLen ? 'block' : 'none'; }
+      if(smartCard){ smartCard.style.display = (isLocal ? (localLen ? 'block' : 'none') : ((netLen||localLen) ? 'block' : 'none')); }
+      // 若切换到本地搜索，立即根据当前关键词执行本地搜索以决定显示
+      var inputVal = (input && input.value) ? input.value : '';
+      if(isLocal){ localSearch(inputVal); }
+      else { if(input){ try{ input.dispatchEvent(new Event('keyup')); }catch(e){} } }
       if(checked){
         var gid = getGroupIdByEngine(checked);
         try{ localStorage.setItem(STORE_KEY, (checked).id); }catch(e){}
@@ -123,6 +141,44 @@ const defaultGroupId = (searchGroups.find(g => g.engines.some(e => e.id === defa
           try{ localStorage.setItem(STORE_GROUP_ENGINE_PREFIX + gid, (checked).id); }catch(e){}
         }
       }
+    }
+    function getLocalSites(){
+      try{
+        if(Array.isArray(allSites)) return allSites.map(function(s){ return { title: s.title || '', url: s.url || '', description: s.description || '', subId: s.subId || '' }; });
+      }catch(e){}
+      try{ var el = document.getElementById('local-sites-json'); if(!el) return []; var txt = el.textContent || el.innerText || ''; return JSON.parse(txt || '[]'); }catch(e){ return []; }
+    }
+    function escapeHtml(s){ return (s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]||c;}); }
+    function localSearch(keyword){
+      var list = getLocalSites();
+      keyword = (keyword || '').trim().toLowerCase();
+      var tips = document.getElementById('local-word');
+      var smartCard = document.getElementById('smart-card');
+      if(!tips){ return; }
+      if(!keyword){ tips.innerHTML = ''; tips.style.display = 'none'; return; }
+      var results = [];
+      for(var i=0;i<list.length;i++){
+        var item = list[i];
+        var t = (item.title||'').toLowerCase();
+        var d = (item.description||'').toLowerCase();
+        var u = (item.url||'').toLowerCase();
+        if(t.indexOf(keyword)>=0 || d.indexOf(keyword)>=0 || u.indexOf(keyword)>=0){ results.push(item); }
+        if(results.length>=10) break;
+      }
+      tips.style.display = results.length ? 'block' : 'none';
+      tips.innerHTML = results.map(function(r){
+        var title = escapeHtml(r.title||r.url);
+        var desc = escapeHtml(r.description||'');
+        var text = desc ? (title + ' - ' + desc) : title;
+        return '<li data-url="'+r.url+'"><span class="local">本</span>'+ text +'</li>';
+      }).join('');
+      Array.prototype.slice.call(tips.querySelectorAll('li')).forEach(function(li){
+        li.addEventListener('click', function(){
+          var u = (li).getAttribute('data-url') || '';
+          if(u){ try{ window.open(u, '_blank'); }catch(e){} }
+        });
+      });
+      if(smartCard){ smartCard.style.display = results.length ? 'block' : 'none'; }
     }
     function init(){
       // 恢复分组与引擎选择
@@ -160,6 +216,27 @@ const defaultGroupId = (searchGroups.find(g => g.engines.some(e => e.id === defa
         });
       });
       updateEngine();
+      // 初次进入页面时，立即触发一次本地搜索以避免空白
+      var inputEl = document.getElementById('search-text');
+      if(inputEl){ localSearch(inputEl.value || ''); }
+      // 监听网络联想内容变化，动态显示/隐藏容器，避免空白条
+      var netTips = document.getElementById('word');
+      var localTips = document.getElementById('local-word');
+      var smartCard = document.getElementById('smart-card');
+      if(netTips && smartCard){
+        var obs = new MutationObserver(function(){
+          var checked = document.querySelector('#search-bg input[name="type"]:checked');
+          var isLocal = checked && (checked).id === 'type-local';
+          var netLen = netTips.children.length;
+          var localLen = localTips ? localTips.children.length : 0;
+          smartCard.style.display = isLocal ? (localLen ? 'block' : 'none') : ((netLen||localLen) ? 'block' : 'none');
+        });
+        obs.observe(netTips, { childList: true });
+      }
+      var input = document.getElementById('search-text');
+      var form = document.querySelector('#search-bg .super-search-fm');
+      if(input){ input.addEventListener('input', function(){ localSearch((input).value || ''); }); }
+      if(form){ form.addEventListener('submit', function(e){ var checked = document.querySelector('#search-bg input[name="type"]:checked'); if(checked && checked.id==='type-local'){ e.preventDefault(); var tips = document.getElementById('local-word'); var first = tips && tips.querySelector('a'); if(first){ first.click(); } } }); }
     }
     if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   })();

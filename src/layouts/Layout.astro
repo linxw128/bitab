@@ -13,6 +13,8 @@ import type { ImageMetadata } from 'astro';
 const isImageMeta = (v: unknown): v is ImageMetadata => !!v && typeof v === 'object' && 'src' in (v as any) && 'width' in (v as any) && 'height' in (v as any);
 const darkSearchBg: ImageMetadata | null = (SEARCH_BG_DARK && isImageMeta(SEARCH_BG_DARK)) ? SEARCH_BG_DARK : (isImageMeta(SEARCH_BG) ? SEARCH_BG : null);
 const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTENT_BG_DARK)) ? CONTENT_BG_DARK : (isImageMeta(CONTENT_BG) ? CONTENT_BG : null);
+const hasSearch = Astro.slots.has('searchbar');
+const { hideFooter = false } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -42,7 +44,7 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
     body.io-black-mode #global-bg-light{opacity:0}
     body.io-black-mode #global-bg-dark{opacity:1}
     /* 顶部搜索背景分层 */
-    #search-bg{position:relative;overflow:hidden}
+    #search-bg{position:relative;overflow:visible}
     .search-bg-layer{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;pointer-events:none;opacity:0;transition:opacity .3s;filter:blur(var(--search-bg-blur,0px))}
     .page-container{position:relative;z-index:1;background:transparent !important}
     /* 移除顶部渐变遮罩，避免覆盖背景 */
@@ -187,39 +189,41 @@ const contentDark: ImageMetadata | null = (CONTENT_BG_DARK && isImageMeta(CONTEN
   <Sidebar />
   <div class="main-content flex-fill"> 
     <Header />
-    <div class="header-big post-top css-color mb-4" id="search-bg">
-      <div id="search-bg-light" class="search-bg-layer">
-        {isImageMeta(SEARCH_BG) ? (
-          <Image
-            src={SEARCH_BG}
-            alt="搜索背景（浅色模式)"
-            format="webp"
-            quality={100}
-            width={1920}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', visibility: 'visible' }}
-          />
-        ) : null}
+    {hasSearch ? (
+      <div class="header-big post-top css-color mb-4" id="search-bg">
+        <div id="search-bg-light" class="search-bg-layer">
+          {isImageMeta(SEARCH_BG) ? (
+            <Image
+              src={SEARCH_BG}
+              alt="搜索背景（浅色模式)"
+              format="webp"
+              quality={100}
+              width={1920}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', visibility: 'visible' }}
+            />
+          ) : null}
+        </div>
+        <div id="search-bg-dark" class="search-bg-layer">
+          {darkSearchBg ? (
+            <Image
+              src={darkSearchBg}
+              alt="搜索背景（深色模式)"
+              format="webp"
+              quality={100}
+              width={1920}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', visibility: 'visible' }}
+            />
+          ) : null}
+        </div>
+        <div class="s-search">
+          <slot name="searchbar" />
+        </div>
       </div>
-      <div id="search-bg-dark" class="search-bg-layer">
-        {darkSearchBg ? (
-          <Image
-            src={darkSearchBg}
-            alt="搜索背景（深色模式)"
-            format="webp"
-            quality={100}
-            width={1920}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', visibility: 'visible' }}
-          />
-        ) : null}
-      </div>
-      <div class="s-search">
-        <slot name="searchbar" />
-      </div>
-    </div>
+    ) : null}
     <div id="content" class="content-site customize-site">
       <slot />
     </div>
-    <Footer />
+    {hideFooter ? null : <Footer />}
   </div>
 </div>
 </body>

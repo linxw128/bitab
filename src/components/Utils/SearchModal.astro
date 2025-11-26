@@ -1,6 +1,7 @@
 ---
 // src/components/Utils/SearchModal.astro
 import { searchGroups, defaultSearch } from '@/data/searchConfig';
+import allSites from '@/data/sites/all.js';
 import { Icon } from 'astro-icon/components'
 ---
 
@@ -76,6 +77,10 @@ import { Icon } from 'astro-icon/components'
               <Icon name="ri:search-line" />
             </button>
           </form>
+          <div id="smart-card-modal" class="card search-smart-tips search-hot-text" style="display:none">
+            <ul id="m_word" style="display:none"></ul>
+            <ul id="m_local_word" style="display:none"></ul>
+          </div>
         </div>
       </div>
       
@@ -89,7 +94,7 @@ import { Icon } from 'astro-icon/components'
 </div>
 
 <!-- 分组切换与模态框控制脚本 -->
-<script is:inline>
+<script is:inline define:vars={{allSites}}>
 document.addEventListener('DOMContentLoaded', function() {
   const modal = document.getElementById('search-modal');
   const container = modal;
@@ -122,6 +127,35 @@ document.addEventListener('DOMContentLoaded', function() {
     if (input && placeholder) input.placeholder = placeholder;
   }
 
+  function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]||c;}); }
+  function getLocalSites(){ try{ return Array.isArray(allSites) ? allSites.map(s=>({ title: s.title||'', url: s.url||'', description: s.description||'', subId: s.subId||'' })) : []; }catch(e){ return []; } }
+  function localSearchModal(keyword){
+    const list = getLocalSites();
+    const tips = container.querySelector('#m_local_word');
+    const smartCard = container.querySelector('#smart-card-modal');
+    if (!tips) return;
+    keyword = (keyword||'').trim().toLowerCase();
+    if (!keyword){ (tips).innerHTML=''; (tips).style.display='none'; if(smartCard){ var mword = container.querySelector('#m_word'); var netLen = mword && mword.children ? mword.children.length : 0; (smartCard).style.display = netLen ? 'block' : 'none'; } return; }
+    const results = [];
+    for (let i=0;i<list.length;i++){
+      const item = list[i];
+      const t = (item.title||'').toLowerCase();
+      const d = (item.description||'').toLowerCase();
+      const u = (item.url||'').toLowerCase();
+      if (t.indexOf(keyword)>=0 || d.indexOf(keyword)>=0 || u.indexOf(keyword)>=0) results.push(item);
+      if (results.length>=10) break;
+    }
+    (tips).style.display = results.length ? 'block' : 'none';
+    (tips).innerHTML = results.map(r=>{
+      const title = escapeHtml(r.title||r.url);
+      const desc = escapeHtml(r.description||'');
+      const text = desc ? (title + ' - ' + desc) : title;
+      return '<li data-url="'+r.url+'"><span class="local">本地</span>'+ text +'</li>';
+    }).join('');
+    Array.prototype.slice.call(tips.querySelectorAll('li')).forEach(function(li){ li.addEventListener('click', function(){ var u = (li).getAttribute('data-url')||''; if(u){ try{ window.open(u,'_blank'); }catch(e){} } }); });
+    if(smartCard){ var mword2 = container.querySelector('#m_word'); var netLen2 = mword2 && mword2.children ? mword2.children.length : 0; (smartCard).style.display = (results.length || netLen2) ? 'block' : 'none'; }
+  }
+
   container.querySelectorAll('.s-type-list label').forEach(label => {
     label.addEventListener('click', function() {
       const gid = (this).dataset.id || '';
@@ -133,6 +167,18 @@ document.addEventListener('DOMContentLoaded', function() {
     radio.addEventListener('change', function() {
       if ((this).checked) {
         updateSearchForm((this).value, (this).dataset.placeholder || '');
+        var inputEl2 = container.querySelector('#m_search-text');
+        var val = ((inputEl2 && inputEl2.value) ? inputEl2.value : '').trim();
+        if ((this).id === 'm_type-local') {
+          localSearchModal(val);
+        } else {
+          const tips = container.querySelector('#m_local_word');
+          const smartCard = container.querySelector('#smart-card-modal');
+          if (tips){ (tips).innerHTML=''; (tips).style.display='none'; }
+          var mword3 = container.querySelector('#m_word');
+          var netLen3 = mword3 && mword3.children ? mword3.children.length : 0;
+          if (smartCard) (smartCard).style.display = netLen3 ? 'block' : 'none';
+        }
       }
     });
   });
@@ -148,6 +194,13 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   modal.addEventListener('shown.bs.modal', init);
   init();
+
+  const mInputEl = container.querySelector('#m_search-text');
+  if (mInputEl) mInputEl.addEventListener('keyup', function(){
+    const val = (mInputEl.value || '').trim();
+    const checked = container.querySelector('input[name="type2"]:checked');
+    if (checked && checked.id === 'm_type-local') localSearchModal(val);
+  });
 
   let backdrop = null;
   const body = document.body;

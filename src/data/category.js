@@ -108,6 +108,18 @@ export const CATEGORY_CONFIG = {
       },
     ]
   }
+  ,
+  games: {
+    name: '休闲游戏',
+    icon: 'ri:gamepad-line',
+    subItems: [
+      {
+        id: 'games',
+        name: '小游戏',
+        icon: 'ri:gamepad-line'
+      }
+    ]
+  }
 };
 
 // 辅助方法

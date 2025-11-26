@@ -4,6 +4,7 @@ export const searchGroups = [
     id: 'group-a',
     label: '常用',
     engines: [
+      { id: 'type-local', label: '本地站点', url: '#', placeholder: '搜索本地收录的网站' },
       { id: 'type-bing', label: '必应', url: 'https://www.bing.com/search?q=', placeholder: '微软 Bing 搜索' },
       { id: 'type-baidu', label: '百度', url: 'https://www.baidu.com/s?wd=', placeholder: '百度一下，你就知道' },
       { id: 'type-google', label: '谷歌', url: 'https://www.google.com/search?q=', placeholder: '谷歌搜索' },
@@ -69,10 +70,10 @@ export const searchGroups = [
   }
 ];
 
-// 设置默认搜索引擎(必应)
+// 设置默认搜索引擎(本地站点)
 export const defaultSearch = {
-  id: 'type-bing',
-  label: '必应',
-  url: 'https://www.bing.com/search?q=',
-  placeholder: '微软 Bing 搜索'
+  id: 'type-local',
+  label: '本地站点',
+  url: '#',
+  placeholder: '搜索本地收录的网站'
 };

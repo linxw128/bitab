@@ -277,4 +277,22 @@ export default [
         description: '收录了很多影视资源',
         id: '319312'
     },
+    
+    // 休闲游戏
+    {
+        subId: 'games',
+        url: '/games/snake',
+        title: '贪吃蛇',
+        description: '简易贪吃蛇',
+        logo: '/images/favicon-48.png',
+        id: 'snake'
+    },
+    {
+        subId: 'games',
+        url: '/games/tetris',
+        title: '俄罗斯方块',
+        description: '简易俄罗斯方块',
+        logo: '/images/favicon-48.png',
+        id: 'tetris'
+    },
 ]
