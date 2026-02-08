@@ -3,7 +3,7 @@
 import Sidebar from '../components/Sidebar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_DESCRIPTION, SITE_FAVICON, SITE_TITLE, SEARCH_BG, CONTENT_BG, SEARCH_BG_DARK, CONTENT_BG_DARK, SIDEBAR_BLUR, SIDEBAR_OPACITY, SIDEBAR_OPACITY_DARK, SIDEBAR_POPUP_OPACITY, SIDEBAR_POPUP_OPACITY_DARK, SIDEBAR_BORDER_COLOR_LIGHT, SIDEBAR_BORDER_COLOR_DARK } from '../settings';
+import { SITE_LABEL, KEYWORDs, SITE_DESCRIPTION, SITE_FAVICON, SITE_TITLE, SEARCH_BG, CONTENT_BG, SEARCH_BG_DARK, CONTENT_BG_DARK, SIDEBAR_BLUR, SIDEBAR_OPACITY, SIDEBAR_OPACITY_DARK, SIDEBAR_POPUP_OPACITY, SIDEBAR_POPUP_OPACITY_DARK, SIDEBAR_BORDER_COLOR_LIGHT, SIDEBAR_BORDER_COLOR_DARK } from '../settings';
 import { LIGHT_MODE, DARK_MODE, AUTO_MODE, DEFAULT_THEME } from '../constants/constants';
 import '../styles/global.css';
 import '../styles/external.css';
@@ -26,7 +26,7 @@ const { hideFooter = false } = Astro.props;
   <link rel="sitemap" href="/sitemap-index.xml" />
   <title>{SITE_TITLE}</title>
   <link rel="shortcut icon" href={SITE_FAVICON} />
-  <meta name="keywords" content={SITE_TITLE} />
+  <meta name="keywords" content={KEYWORDs} />
   <meta name="description" content={SITE_DESCRIPTION} />
 
   <style>

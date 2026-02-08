@@ -1,11 +1,13 @@
 import type { ImageMetadata } from 'astro';
 
 
-export const SITE_TITLE = '网站导航';
-export const SITE_DESCRIPTION = '在线网址导航';
+export const SITE_TITLE = '比塔网: 网站网址AI导航';
+export const KEYWORDs = '比塔网, 导航, 网站, 网址, AI, 工具';
+export const SITE_DESCRIPTION = '比塔网: 网站网址导航, AI热点工具精品网站';
 export const SITE_FAVICON = '/images/favicon-48.png';
 // 明暗模式下的logo
 export const SITE_LOGO = '/images/favicon-192.png';
+export const SITE_LABEL = '网站导航'; 
 export const SITE_LOGO_DARK = '/images/favicon-192.png';
 
 // - 仅 SEARCH_BG ：顶部有图，下面保留网格
@@ -13,10 +15,10 @@ export const SITE_LOGO_DARK = '/images/favicon-192.png';
 // - 仅 CONTENT_BG ：整页全屏图
 // - 夜间模式同理，若配置了 _DARK 变量则使用夜间图，否则自动回退到浅色图
 
-import contentBg from 'src/assets/好朋友.png';
-import contentBgDark from 'src/assets/tree.jpg';
-import searchBg from 'src/assets/好朋友.png';
-import searchBgDark from 'src/assets/tree.jpg';
+import contentBg from 'src/assets/bg.png';
+import contentBgDark from 'src/assets/bg-dark.png';
+import searchBg from 'src/assets/bg.png';
+import searchBgDark from 'src/assets/bg-dark.png';
 
 export const SEARCH_BG: ImageMetadata | '' = ''; 
 export const SEARCH_BG_DARK: ImageMetadata | '' = '';

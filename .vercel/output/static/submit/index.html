@@ -1,0 +1,800 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#f9f9f9"><link rel="sitemap" href="/sitemap-index.xml"><title>比塔网: 网站网址AI导航</title><link rel="shortcut icon" href="/images/favicon-48.png"><meta name="keywords" content="比塔网, 导航, 网站, 网址, AI, 工具"><meta name="description" content="比塔网: 网站网址导航, AI热点工具精品网站"><script>(function(){const DEFAULT_THEME = "light";
+const LIGHT_MODE = "light";
+const DARK_MODE = "dark";
+const AUTO_MODE = "auto";
+
+    (function() {
+      // 使用与theme-utils.ts相同的逻辑
+      function getStoredTheme() {
+        const stored = localStorage.getItem('theme');
+        return stored || DEFAULT_THEME;
+      }
+      
+      function applyThemeToDocument(theme) {
+        // 立即应用到body，不等待DOM加载
+        const body = document.body || document.getElementsByTagName('body')[0];
+        if (body) {
+          // 移除现有的主题类
+          body.classList.remove('io-grey-mode', 'io-black-mode');
+          
+          // 应用新的主题类
+          switch (theme) {
+            case LIGHT_MODE:
+              body.classList.add('io-grey-mode');
+              break;
+            case DARK_MODE:
+              body.classList.add('io-black-mode');
+              break;
+            case AUTO_MODE:
+              if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                body.classList.add('io-black-mode');
+              } else {
+                body.classList.add('io-grey-mode');
+              }
+              break;
+          }
+        }
+      }
+      
+      // 立即应用存储的主题
+      const storedTheme = getStoredTheme();
+      // 如果存储的是AUTO_MODE，LightDarkSwitch会默认设为LIGHT_MODE
+      const theme = (storedTheme === LIGHT_MODE || storedTheme === DARK_MODE) ? storedTheme : LIGHT_MODE;
+      
+      try { (document.body || document.getElementsByTagName('body')[0]).classList.add('theme-init'); } catch(e) {}
+      applyThemeToDocument(theme);
+      requestAnimationFrame(function(){ try { (document.body || document.getElementsByTagName('body')[0]).classList.remove('theme-init'); } catch(e) {} });
+      
+      // 如果body还不存在，监听DOM变化
+      if (!document.body) {
+        const observer = new MutationObserver(function(mutations) {
+          if (document.body) {
+            observer.disconnect();
+            applyThemeToDocument(theme);
+          }
+        });
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+      }
+    })();
+  })();</script><script>(function(){const SEARCH_BG = "";
+const CONTENT_BG = {"src":"/_astro/bg.BHPn8Kyw.png","width":320,"height":180,"format":"png"};
+const SEARCH_BG_DARK = "";
+const CONTENT_BG_DARK = {"src":"/_astro/bg-dark.CoWyHYYt.png","width":320,"height":180,"format":"png"};
+const DEFAULT_THEME = "light";
+const LIGHT_MODE = "light";
+const DARK_MODE = "dark";
+const AUTO_MODE = "auto";
+
+    (function(){
+      try{
+        var stored = localStorage.getItem('theme') || DEFAULT_THEME;
+        var dark = stored === DARK_MODE ? true : (stored === LIGHT_MODE ? false : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches));
+        function normalizeUrl(s){
+          if(!s) return '';
+          try{
+            if (/^https?:\/\//i.test(s)) return s;
+          }catch(e){}
+          return s.startsWith('/') ? s : ('/' + s);
+        }
+        var searchImg = normalizeUrl(dark ? (SEARCH_BG_DARK || SEARCH_BG || '') : (SEARCH_BG || ''));
+        var contentImg = normalizeUrl(dark ? (CONTENT_BG_DARK || CONTENT_BG || '') : (CONTENT_BG || ''));
+        /* 由分层背景负责显示切换，不在此处写入 URL */
+      }catch(e){}
+    })();
+  })();</script><script>
+    (function(){
+      try{
+        var stored = localStorage.getItem('miniSidebar') === '1';
+        function apply(){
+          var el = document.getElementById('sidebar');
+          if(el){
+            if(stored) el.classList.add('mini-sidebar');
+            return true;
+          }
+          return false;
+        }
+        if(!apply()){
+          var obs = new MutationObserver(function(){ if(apply()) obs.disconnect(); });
+          obs.observe(document.documentElement,{childList:true,subtree:true});
+        }
+      }catch(e){}
+    })();
+  </script><script type="module">const s=document.getElementById("go-to-up"),i=()=>{const e=window.scrollY||document.documentElement.scrollTop||0;s&&(s.style.display=e>200?"block":"none")};i();window.addEventListener("scroll",i,{passive:!0});s&&s.addEventListener("click",e=>{e.preventDefault(),window.scrollTo({top:0,behavior:"smooth"})});const m='a[data-toggle="modal"][data-target="#search-modal"]',t=document.getElementById("search-modal"),n=document.body;function u(){t&&(t.style.display="block",t.classList.add("show"),t.setAttribute("aria-hidden","false"),backdrop=document.createElement("div"),backdrop.className="modal-backdrop fade show",n.appendChild(backdrop),n.style.overflow="hidden",n.classList.add("modal-open"),t.dispatchEvent(new CustomEvent("modal:shown")))}function r(){t&&(t.classList.remove("show"),t.style.display="none",t.setAttribute("aria-hidden","true"),backdrop&&(backdrop.remove(),backdrop=null),n.style.overflow="",n.classList.remove("modal-open"))}document.querySelectorAll(m).forEach(e=>{e.addEventListener("click",o=>{o.preventDefault(),u()})});document.addEventListener("click",e=>{const o=e.target;o&&o.closest('[data-dismiss="modal"]')&&(e.preventDefault(),r())});window.addEventListener("keydown",e=>{e.key==="Escape"&&r()});t&&t.addEventListener("click",e=>{e.target===t&&r()});const d=document.querySelectorAll("img[data-src]"),f="/images/logo.png",l=e=>{const o=e.getAttribute("data-src");o&&(e.src=o,e.removeAttribute("data-src"),e.addEventListener("error",()=>{e.src=f},{once:!0}))};if(d.length)if(!("IntersectionObserver"in window))d.forEach(e=>l(e));else{const e=new IntersectionObserver(o=>{o.forEach(a=>{if(a.isIntersecting){const c=a.target;l(c),e.unobserve(c)}})});d.forEach(o=>e.observe(o))}window.addEventListener("load",()=>{const e=document.getElementById("loading");e&&(e.classList.add("close"),setTimeout(()=>{e.remove()},600))});</script><script type="module" src="/_astro/Layout.astro_astro_type_script_index_1_lang.sfEWGOJY.js"></script><script type="module" src="/_astro/Layout.astro_astro_type_script_index_2_lang.BtJQXYI6.js"></script><script type="module" src="/_astro/Layout.astro_astro_type_script_index_3_lang.DKcUI8R4.js"></script><style>body.io-black-mode #Comments .atk-editor,html.dark #Comments .atk-editor{background-color:#111827!important;border-color:#374151!important;color:#e5e7eb!important}body.io-black-mode #Comments .atk-editor textarea,body.io-black-mode #Comments .atk-editor input[type=text],body.io-black-mode #Comments .atk-editor input[type=email],body.io-black-mode #Comments .atk-editor .atk-input,body.io-black-mode #Comments .atk-editor .atk-textarea,body.io-black-mode #Comments .atk-editor .form-control,html.dark #Comments .atk-editor textarea,html.dark #Comments .atk-editor input[type=text],html.dark #Comments .atk-editor input[type=email],html.dark #Comments .atk-editor .atk-input,html.dark #Comments .atk-editor .atk-textarea,html.dark #Comments .atk-editor .form-control{background-color:#1f2937!important;color:#e5e7eb!important;border-color:#374151!important;box-shadow:none!important}body.io-black-mode #Comments .atk-editor textarea::placeholder,body.io-black-mode #Comments .atk-editor input::placeholder,html.dark #Comments .atk-editor textarea::placeholder,html.dark #Comments .atk-editor input::placeholder{color:#9aa0a6!important;opacity:1!important}body.io-black-mode #Comments .atk-editor button,body.io-black-mode #Comments .atk-editor .atk-send,html.dark #Comments .atk-editor button,html.dark #Comments .atk-editor .atk-send{background-color:#374151!important;color:#e5e7eb!important;border-color:#4b5563!important}body.io-black-mode #Comments .atk-editor button:hover,body.io-black-mode #Comments .atk-editor .atk-send:hover,html.dark #Comments .atk-editor button:hover,html.dark #Comments .atk-editor .atk-send:hover{background-color:#4b5563!important;border-color:#6b7280!important}body.io-black-mode #Comments .atk-editor label,body.io-black-mode #Comments .atk-editor .atk-editor__header,html.dark #Comments .atk-editor label,html.dark #Comments .atk-editor .atk-editor__header{color:#cbd5e1!important}.io-black-mode[data-astro-cid-cfftgubm] .card[data-astro-cid-cfftgubm]{background-color:#2d3748;border-color:#4a5568}.io-black-mode[data-astro-cid-cfftgubm] .card-header[data-astro-cid-cfftgubm]{background-color:#2d3748!important;border-color:#4a5568}.io-black-mode[data-astro-cid-cfftgubm] .text-muted[data-astro-cid-cfftgubm]{color:#a0aec0!important}.io-black-mode[data-astro-cid-cfftgubm] .alert-info[data-astro-cid-cfftgubm]{background-color:#4299e11a;border-color:#4299e1;color:#90cdf4}.io-black-mode[data-astro-cid-cfftgubm] h1[data-astro-cid-cfftgubm],.io-black-mode[data-astro-cid-cfftgubm] h4[data-astro-cid-cfftgubm],.io-black-mode[data-astro-cid-cfftgubm] h5[data-astro-cid-cfftgubm],.io-black-mode[data-astro-cid-cfftgubm] .card-title[data-astro-cid-cfftgubm]{color:#f7fafc}.io-black-mode[data-astro-cid-cfftgubm] .lead[data-astro-cid-cfftgubm]{color:#cbd5e0}.card[data-astro-cid-cfftgubm]{transition:transform .2s ease-in-out}.card[data-astro-cid-cfftgubm]:hover{transform:translateY(-2px)}
+</style>
+<link rel="stylesheet" href="/_astro/about.Ban9Bps3.css"></head> <div class="modal fade search-modal" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true" data-astro-cid-b275zti3> <div class="modal-dialog modal-lg modal-dialog-centered" data-astro-cid-b275zti3> <div class="modal-content" data-astro-cid-b275zti3> <div class="modal-body" data-astro-cid-b275zti3> <div id="search" class="s-search mx-auto my-4" data-astro-cid-b275zti3> <div id="search-list" class="hide-type-list" data-astro-cid-b275zti3> <!-- 分类标签 --> <div class="s-type" data-astro-cid-b275zti3> <span id="group-current" data-astro-cid-b275zti3></span> <div class="s-type-list" data-astro-cid-b275zti3> <label for="m_type-local" data-id="group-a" class="active" data-astro-cid-b275zti3> 常用 </label><label for="m_type-bing1" data-id="group-b" class data-astro-cid-b275zti3> 搜索 </label><label for="m_type-br" data-id="group-c" class data-astro-cid-b275zti3> 工具 </label><label for="m_type-zhihu" data-id="group-d" class data-astro-cid-b275zti3> 社区 </label><label for="m_type-taobao1" data-id="group-e" class data-astro-cid-b275zti3> 生活 </label><label for="m_type-zhaopin" data-id="group-f" class data-astro-cid-b275zti3> 求职 </label> </div> </div> <!-- 搜索引擎组 --> <div class="search-groups-container" data-astro-cid-b275zti3> <div class="search-group group-a" style="display: block;" data-astro-cid-b275zti3> <ul class="search-type" data-astro-cid-b275zti3> <li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-local" value="#" data-placeholder="搜索本地收录的网站" checked hidden data-astro-cid-b275zti3> <label for="m_type-local" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>本地站点</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-bing" value="https://www.bing.com/search?q=" data-placeholder="微软 Bing 搜索" hidden data-astro-cid-b275zti3> <label for="m_type-bing" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>必应</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-baidu" value="https://www.baidu.com/s?wd=" data-placeholder="百度一下，你就知道" hidden data-astro-cid-b275zti3> <label for="m_type-baidu" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>百度</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-google" value="https://www.google.com/search?q=" data-placeholder="谷歌搜索" hidden data-astro-cid-b275zti3> <label for="m_type-google" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>谷歌</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-anaconda" value="https://anaconda.org/search?q=" data-placeholder="Anaconda 软件搜索" hidden data-astro-cid-b275zti3> <label for="m_type-anaconda" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>软件</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-pubmed" value="https://pubmed.ncbi.nlm.nih.gov/?term=" data-placeholder="PubMed 搜索/文章标题/关键字" hidden data-astro-cid-b275zti3> <label for="m_type-pubmed" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>文献</span> </label> </li> </ul> </div><div class="search-group group-b" style="display: none;" data-astro-cid-b275zti3> <ul class="search-type" data-astro-cid-b275zti3> <li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-bing1" value="https://www.bing.com/search?q=" data-placeholder="微软 Bing 搜索" hidden data-astro-cid-b275zti3> <label for="m_type-bing1" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>必应</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-baidu1" value="https://www.baidu.com/s?wd=" data-placeholder="百度一下，你就知道" hidden data-astro-cid-b275zti3> <label for="m_type-baidu1" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>百度</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-google1" value="https://www.google.com/search?q=" data-placeholder="谷歌搜索" hidden data-astro-cid-b275zti3> <label for="m_type-google1" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>谷歌</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-360" value="https://www.so.com/s?q=" data-placeholder="360 好搜" hidden data-astro-cid-b275zti3> <label for="m_type-360" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>360</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-sogo" value="https://www.sogou.com/web?query=" data-placeholder="搜狗搜索" hidden data-astro-cid-b275zti3> <label for="m_type-sogo" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>搜狗</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-sm" value="https://yz.m.sm.cn/s?q=" data-placeholder="UC 移动端搜索" hidden data-astro-cid-b275zti3> <label for="m_type-sm" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>神马</span> </label> </li> </ul> </div><div class="search-group group-c" style="display: none;" data-astro-cid-b275zti3> <ul class="search-type" data-astro-cid-b275zti3> <li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-br" value="https://rank.chinaz.com/all/" data-placeholder="请输入网址(不带 https://)" hidden data-astro-cid-b275zti3> <label for="m_type-br" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>权重查询</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-links" value="https://link.chinaz.com/" data-placeholder="请输入网址(不带 https://)" hidden data-astro-cid-b275zti3> <label for="m_type-links" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>友链检测</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-whois" value="https://who.is/whois/" data-placeholder="请输入网址(不带 https://)" hidden data-astro-cid-b275zti3> <label for="m_type-whois" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>域名信息查询</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-ping" value="https://ping.chinaz.com/" data-placeholder="请输入网址(不带 https://)" hidden data-astro-cid-b275zti3> <label for="m_type-ping" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>PING 检测</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-404" value="https://tool.chinaz.com/Links/?DAddress=" data-placeholder="请输入网址(不带https://)" hidden data-astro-cid-b275zti3> <label for="m_type-404" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>死链检测</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-ciku" value="https://www.ciku5.com/s?wd=" data-placeholder="请输入关键词" hidden data-astro-cid-b275zti3> <label for="m_type-ciku" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>关键词挖掘</span> </label> </li> </ul> </div><div class="search-group group-d" style="display: none;" data-astro-cid-b275zti3> <ul class="search-type" data-astro-cid-b275zti3> <li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-zhihu" value="https://www.zhihu.com/search?type=content&q=" data-placeholder="知乎" hidden data-astro-cid-b275zti3> <label for="m_type-zhihu" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>知乎</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-wechat" value="https://weixin.sogou.com/weixin?type=2&query=" data-placeholder="微信" hidden data-astro-cid-b275zti3> <label for="m_type-wechat" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>微信</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-weibo" value="https://s.weibo.com/weibo/" data-placeholder="微博" hidden data-astro-cid-b275zti3> <label for="m_type-weibo" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>微博</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-douban" value="https://www.douban.com/search?q=" data-placeholder="豆瓣" hidden data-astro-cid-b275zti3> <label for="m_type-douban" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>豆瓣</span> </label> </li> </ul> </div><div class="search-group group-e" style="display: none;" data-astro-cid-b275zti3> <ul class="search-type" data-astro-cid-b275zti3> <li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-taobao1" value="https://s.taobao.com/search?q=" data-placeholder="淘宝" hidden data-astro-cid-b275zti3> <label for="m_type-taobao1" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>淘宝</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-jd" value="https://search.jd.com/Search?keyword=" data-placeholder="京东" hidden data-astro-cid-b275zti3> <label for="m_type-jd" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>京东</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-xiachufang" value="https://www.xiachufang.com/search/?keyword=" data-placeholder="下厨房" hidden data-astro-cid-b275zti3> <label for="m_type-xiachufang" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>下厨房</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-xiangha" value="https://www.xiangha.com/so/?q=caipu&s=" data-placeholder="香哈菜谱" hidden data-astro-cid-b275zti3> <label for="m_type-xiangha" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>香哈菜谱</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-12306" value="https://www.12306.cn/?" data-placeholder="12306" hidden data-astro-cid-b275zti3> <label for="m_type-12306" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>12306</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-qunar" value="https://www.qunar.com/?" data-placeholder="去哪儿" hidden data-astro-cid-b275zti3> <label for="m_type-qunar" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>去哪儿</span> </label> </li> </ul> </div><div class="search-group group-f" style="display: none;" data-astro-cid-b275zti3> <ul class="search-type" data-astro-cid-b275zti3> <li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-zhaopin" value="https://sou.zhaopin.com/jobs/searchresult.ashx?kw=" data-placeholder="智联招聘" hidden data-astro-cid-b275zti3> <label for="m_type-zhaopin" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>智联招聘</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-51job" value="https://search.51job.com/?" data-placeholder="前程无忧" hidden data-astro-cid-b275zti3> <label for="m_type-51job" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>前程无忧</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-lagou" value="https://www.lagou.com/jobs/list_" data-placeholder="拉钩网" hidden data-astro-cid-b275zti3> <label for="m_type-lagou" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>拉钩网</span> </label> </li><li data-astro-cid-b275zti3> <input type="radio" name="type2" id="m_type-liepin" value="https://www.liepin.com/zhaopin/?key=" data-placeholder="猎聘网" hidden data-astro-cid-b275zti3> <label for="m_type-liepin" data-astro-cid-b275zti3> <span class="text-muted" data-astro-cid-b275zti3>猎聘网</span> </label> </li> </ul> </div> </div> </div> <!-- 搜索表单 --> <form action="#" method="get" target="_blank" class="super-search-fm" data-astro-cid-b275zti3> <input type="text" id="m_search-text" class="form-control smart-tips search-key" autocomplete="off" placeholder="搜索本地收录的网站" style="outline:0" required data-astro-cid-b275zti3> <button type="submit" data-astro-cid-b275zti3> <svg width="1em" height="1em" data-astro-cid-b275zti3="true" data-icon="ri:search-line">   <symbol id="ai:ri:search-line" viewBox="0 0 24 24"><path fill="currentColor" d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z"/></symbol><use href="#ai:ri:search-line"></use>  </svg> </button> </form> <div id="smart-card-modal" class="card search-smart-tips search-hot-text" style="display:none" data-astro-cid-b275zti3> <ul id="m_word" style="display:none" data-astro-cid-b275zti3></ul> <ul id="m_local_word" style="display:none" data-astro-cid-b275zti3></ul> </div> </div> </div> <div style="position: absolute;bottom: -40px;width: 100%;text-align: center;" data-astro-cid-b275zti3> <a href="javascript:" data-dismiss="modal" data-astro-cid-b275zti3> <svg width="1em" height="1em" class="icon-2x" data-astro-cid-b275zti3="true" data-icon="ri:close-circle-line">   <symbol id="ai:ri:close-circle-line" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16m0-9.414l2.828-2.829l1.415 1.415L13.414 12l2.829 2.828l-1.415 1.415L12 13.414l-2.828 2.829l-1.415-1.415L10.586 12L7.757 9.172l1.415-1.415z"/></symbol><use href="#ai:ri:close-circle-line"></use>  </svg> </a> </div> </div> </div> </div> <!-- 分组切换与模态框控制脚本 --> <script>(function(){const allSites = [{"subId":"common","url":"https://www.deepseek.com","title":"DeepSeek","description":"DeepSeek","id":"DeepSeek"},{"subId":"common","url":"https://www.qianwen.com","title":"千问","description":"千问","id":"qianwen"},{"subId":"common","url":"https://www.doubao.com/chat","title":"豆包","description":"豆包Chat，一个基于大模型的智能问答平台","logo":"","id":"doubao"},{"subId":"common","url":"https://github.com","title":"GitHub","description":"代码托管平台","logo":"","id":"github"},{"subId":"common","url":"https://vercel.com/","title":"Vercel","description":"代码托管平台,我许多项目都托管到上面啦!","logo":"","id":"Vercel"},{"subId":"common","url":"https://www.bilibili.com/","title":"哔哩哔哩","description":"哔哩哔哩","id":"bilibili"},{"subId":"common","url":"https://test.ustc.edu.cn/","title":"中科大测速网站","description":"中国科技大学测速网站，要来测个速吗","logo":"","id":"ustc"},{"subId":"common","url":"https://favicon.im/zh","title":"网站图标获取","description":"即时获取和下载任何网站的图标。","logo":"","id":"favicon"},{"subId":"anime","url":"https://mikanani.me/","title":"蜜柑计划","description":"首推，收录了很多字幕组的动漫资源","logo":"","id":"mikanani"},{"subId":"anime","url":"https://animes.garden/","title":"动漫花园镜像站","description":"非常全的一个字幕组资源搜索引擎","logo":"","id":"dmhyjx"},{"subId":"anime","url":"https://bangumi.moe/","title":"萌番组","description":"传统BT动漫资源网站，收录了很多字幕组的动漫资源","logo":"","id":"bangumi"},{"subId":"anime","url":"https://acg.rip/","title":"ACG.RIP","description":"传统BT动漫资源网站，收录了很多字幕组的动漫资源","logo":"images/logos/acgrip.ico","id":"acgrip"},{"subId":"anime","url":"https://share.dmhy.org/","title":"动漫花园","description":"传统BT动漫资源网站，收录了很多字幕组的动漫资源","logo":"images/logos/dmhy.ico","id":"dmhy"},{"subId":"anime","url":"https://miraitv.netlify.app/","title":"miraitv","description":"群友写的看番网站,貌似体验不错","logo":"","id":"miraitv"},{"subId":"animephoto","url":"https://www.someacg.top/","title":"SomeACG","description":"动漫壁纸网站，质量不错","logo":"images/logos/someacg.png","id":"someacg"},{"subId":"animephoto","url":"https://konachan.net/","title":"konachan.net","description":"动漫壁纸网站，质量还行","logo":"images/logos/konachan.net.ico","id":"konachan"},{"subId":"cloud","url":"https://www.pansou.vip/","title":"盘搜","description":"一个优秀的网盘搜索聚合，收录了很多搜索引擎","logo":"images/logos/pansou.ico","id":"pansou"},{"subId":"cloud","url":"https://www.upyunso.com/","title":"up云搜","description":"一个优秀的网盘搜索聚合","logo":"","id":"upyunso"},{"subId":"editor","url":"https://jetbrains.ankio.net/license","title":"jetbrains许可证生成器","description":"可以使用绝大多数的JetBrains产品","logo":"images/logos/jetbrains.png","id":"pansou"},{"subId":"editor","url":"https://javaguide.cn/home.html","title":"Java学习&面试指南","description":"后期java快速学习指南","logo":"","id":"javaguide"},{"subId":"musictool","url":"https://www.kanxizai.cn/163_music/","title":"网易云音乐解析","description":"解析下载网易云音乐","id":"163music"},{"subId":"musictool","url":"https://iigeek.com/","title":"音乐解锁","description":"解锁多平台音乐加密","logo":"","id":"iigeek"},{"subId":"picturetool","url":" https://remove.bg","title":"快速抠图","description":"快速扣透明图，去除背景","logo":"","id":"koutu"},{"subId":"picturetool","url":"https://eimg.yujiay.wang/","title":"小E图床","description":"免费稳定的图床工具","logo":"","id":"eimg"},{"subId":"reader","url":"https://zh.z-library.sk/","title":"Z-Library","description":"收录了世界上海量的书籍","logo":"images/logos/zlib.ico","id":"zlib"},{"subId":"reader","url":"https://zh.annas-archive.org/","title":"安娜的橱窗","description":"人类历史上最大的开放完全的图书馆，免费下载速度较慢","logo":"images/logos/annas.ico","id":"annas"},{"subId":"subtitle","url":"https://assrt.net/","title":"射手网","description":"非常不错的字幕网站，很多资源","logo":"images/logos/assrt.png","id":"assrt"},{"subId":"subtitle","url":"https://zimuku.org/","title":"字幕库","description":"很多优质的字幕","logo":"","id":"zimuku"},{"subId":"subtitle","url":"https://www.opensubtitles.com/","title":"opensubtitles","description":"备选，用的不多，一天20个下载名额","logo":"","id":"opensubtitles"},{"subId":"website","url":"https://pagespeed.web.dev/","title":"Google PageSpeed Insights","description":"分析网站性能","id":"pagespeed"},{"subId":"website","url":"https://gtmetrix.com/","title":"GTmetrix","description":"分析网站性能","id":"gtmetrix"},{"subId":"website","url":"https://www.17ce.com/","title":"17ce","description":"国内网站性能分析","id":"17ce"},{"subId":"影视网站","url":"https://www.319312.com/dongman","title":"319影视","description":"收录了很多影视资源","id":"319312"},{"subId":"games","url":"https://www.4399.com","title":"4399小游戏","description":"4399小游戏","logo":"/images/favicon-4399.ico","id":"4399"}];
+
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('search-modal');
+  const container = modal;
+  if (!container) return;
+
+  function switchGroup(groupId) {
+    container.querySelectorAll('.s-type-list label').forEach(label => {
+      (label).classList.toggle('active', (label).dataset.id === groupId);
+    });
+
+    container.querySelectorAll('.search-group').forEach(group => {
+      (group).style.display = group.classList.contains(groupId) ? 'block' : 'none';
+    });
+
+    const firstEngine = container.querySelector(`.search-group.${groupId} input[name="type2"]`);
+    if (firstEngine) {
+      updateSearchForm(firstEngine.value, firstEngine.dataset.placeholder || '');
+    }
+    const labelEl = container.querySelector(`.s-type-list label[data-id="${groupId}"]`)
+      || container.querySelector('.s-type-list label.active');
+    const display = container.querySelector('#group-current');
+    if (display && labelEl) display.textContent = (labelEl.textContent || '').trim();
+  }
+
+
+  function updateSearchForm(action, placeholder) {
+    const form = container.querySelector('.super-search-fm');
+    const input = container.querySelector('#m_search-text');
+    if (form) form.action = action;
+    if (input && placeholder) input.placeholder = placeholder;
+  }
+
+  function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]||c;}); }
+  function getLocalSites(){ try{ return Array.isArray(allSites) ? allSites.map(s=>({ title: s.title||'', url: s.url||'', description: s.description||'', subId: s.subId||'' })) : []; }catch(e){ return []; } }
+  function localSearchModal(keyword){
+    const list = getLocalSites();
+    const tips = container.querySelector('#m_local_word');
+    const smartCard = container.querySelector('#smart-card-modal');
+    if (!tips) return;
+    keyword = (keyword||'').trim().toLowerCase();
+    if (!keyword){ (tips).innerHTML=''; (tips).style.display='none'; if(smartCard){ var mword = container.querySelector('#m_word'); var netLen = mword && mword.children ? mword.children.length : 0; (smartCard).style.display = netLen ? 'block' : 'none'; } return; }
+    const results = [];
+    for (let i=0;i<list.length;i++){
+      const item = list[i];
+      const t = (item.title||'').toLowerCase();
+      const d = (item.description||'').toLowerCase();
+      const u = (item.url||'').toLowerCase();
+      if (t.indexOf(keyword)>=0 || d.indexOf(keyword)>=0 || u.indexOf(keyword)>=0) results.push(item);
+      if (results.length>=10) break;
+    }
+    (tips).style.display = results.length ? 'block' : 'none';
+    (tips).innerHTML = results.map(r=>{
+      const title = escapeHtml(r.title||r.url);
+      const desc = escapeHtml(r.description||'');
+      const text = desc ? (title + ' - ' + desc) : title;
+      return '<li data-url="'+r.url+'"><span class="local">本地</span>'+ text +'</li>';
+    }).join('');
+    Array.prototype.slice.call(tips.querySelectorAll('li')).forEach(function(li){ li.addEventListener('click', function(){ var u = (li).getAttribute('data-url')||''; if(u){ try{ window.open(u,'_blank'); }catch(e){} } }); });
+    if(smartCard){ var mword2 = container.querySelector('#m_word'); var netLen2 = mword2 && mword2.children ? mword2.children.length : 0; (smartCard).style.display = (results.length || netLen2) ? 'block' : 'none'; }
+  }
+
+  container.querySelectorAll('.s-type-list label').forEach(label => {
+    label.addEventListener('click', function() {
+      const gid = (this).dataset.id || '';
+      if (gid) switchGroup(gid);
+    });
+  });
+  
+  container.querySelectorAll('input[name="type2"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      if ((this).checked) {
+        updateSearchForm((this).value, (this).dataset.placeholder || '');
+        var inputEl2 = container.querySelector('#m_search-text');
+        var val = ((inputEl2 && inputEl2.value) ? inputEl2.value : '').trim();
+        if ((this).id === 'm_type-local') {
+          localSearchModal(val);
+        } else {
+          const tips = container.querySelector('#m_local_word');
+          const smartCard = container.querySelector('#smart-card-modal');
+          if (tips){ (tips).innerHTML=''; (tips).style.display='none'; }
+          var mword3 = container.querySelector('#m_word');
+          var netLen3 = mword3 && mword3.children ? mword3.children.length : 0;
+          if (smartCard) (smartCard).style.display = netLen3 ? 'block' : 'none';
+        }
+      }
+    });
+  });
+  
+  const init = () => {
+    const active = container.querySelector('.s-type-list label.active');
+    const first = container.querySelector('.s-type-list label');  
+    const gid = (active && active.dataset.id) || (first && first.dataset.id) || 'group-a';
+    switchGroup(gid);
+    const display = container.querySelector('#group-current');
+    const labelEl = container.querySelector(`.s-type-list label[data-id="${gid}"]`) || active || first;
+    if (display && labelEl) display.textContent = (labelEl.textContent || '').trim();
+  };
+  modal.addEventListener('shown.bs.modal', init);
+  init();
+
+  const mInputEl = container.querySelector('#m_search-text');
+  if (mInputEl) mInputEl.addEventListener('keyup', function(){
+    const val = (mInputEl.value || '').trim();
+    const checked = container.querySelector('input[name="type2"]:checked');
+    if (checked && checked.id === 'm_type-local') localSearchModal(val);
+  });
+
+  let backdrop = null;
+  const body = document.body;
+  function openModal() {
+    modal.style.display = 'block';
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop fade show';
+    body.appendChild(backdrop);
+    body.style.overflow = 'hidden';
+    body.classList.add('modal-open');
+    try { modal.dispatchEvent(new Event('shown.bs.modal')); } catch(e) {}
+  }
+  function closeModal() {
+    modal.classList.remove('show');
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    if (backdrop) { backdrop.remove(); backdrop = null; }
+    body.style.overflow = '';
+    body.classList.remove('modal-open');
+  }
+  document.querySelectorAll('a[data-toggle="modal"][data-target="#search-modal"]').forEach(a => {
+    a.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+  });
+  container.addEventListener('click', function(e) {
+    if (e.target === container) closeModal();
+  });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (!t || !(t).closest) return;
+    if ((t).closest('[data-dismiss="modal"]')) { e.preventDefault(); closeModal(); }
+  });
+  window.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+});
+})();</script>  <body class="page-loading io-grey-mode" data-astro-cid-sckkx6r4> <div id="global-bg-light" class="global-bg-layer" data-astro-cid-sckkx6r4> <img src="/_astro/bg.BHPn8Kyw_MqgjG.webp" alt loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" data-astro-cid-sckkx6r4="true" decoding="async" fetchpriority="auto" width="1920" height="1080"> </div> <div id="global-bg-dark" class="global-bg-layer" data-astro-cid-sckkx6r4> <img src="/_astro/bg-dark.CoWyHYYt_ZwprLE.webp" alt loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" data-astro-cid-sckkx6r4="true" decoding="async" fetchpriority="auto" width="1920" height="1080"> </div> <div class="page-container" data-astro-cid-sckkx6r4> <div id="sidebar" class="sticky sidebar-nav fade animate-nav"> <div class="modal-dialog h-100 sidebar-nav-inner"> <!-- Logo部分 --> <div class="sidebar-logo border-bottom border-color"> <div class="logo overflow-hidden"> <a href="/" class="logo-expanded inline-flex items-center gap-2" style="color: var(--sidebar-title-color)"> <img src="/images/favicon-192.png" height="40" class="logo-light" alt="网站导航"> <img src="/images/favicon-192.png" height="40" class="logo-dark d-none" alt="网站导航"> <span style="font-size: 20px; font-weight: bold;">网站导航</span> </a> <a href="/" class="logo-collapsed inline-flex items-center gap-2" style="color: var(--sidebar-title-color)"> <img src="/images/favicon-192.png" height="40" class="logo-light" alt="网站导航"> <img src="/images/favicon-192.png" height="40" class="logo-dark d-none" alt="网站导航"> </a> </div> </div> <!-- 动态生成分类菜单 --> <div class="sidebar-menu flex-fill"> <div class="sidebar-scroll"> <div class="sidebar-menu-inner"> <ul> <li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-common" class="smooth" data-category-id="common"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:apps-2-line">   <symbol id="ai:ri:apps-2-line" viewBox="0 0 24 24"><path fill="currentColor" d="M7 11.5a4.5 4.5 0 1 1 0-9a4.5 4.5 0 0 1 0 9m0 10a4.5 4.5 0 1 1 0-9a4.5 4.5 0 0 1 0 9m10-10a4.5 4.5 0 1 1 0-9a4.5 4.5 0 0 1 0 9m0 10a4.5 4.5 0 1 1 0-9a4.5 4.5 0 0 1 0 9M7 9.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m0 10a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m10-10a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m0 10a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5"/></symbol><use href="#ai:ri:apps-2-line"></use>  </svg> <span>常用工具</span>  </a>  </li><li class="sidebar-item has-submenu"> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-anime" class="smooth" data-category-id="anime"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:movie-2-line">   <symbol id="ai:ri:movie-2-line" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20h8v2h-8C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10a9.96 9.96 0 0 1-2 6h-2.708A8 8 0 1 0 12 20m0-10a2 2 0 1 1 0-4a2 2 0 0 1 0 4m-4 4a2 2 0 1 1 0-4a2 2 0 0 1 0 4m8 0a2 2 0 1 1 0-4a2 2 0 0 1 0 4m-4 4a2 2 0 1 1 0-4a2 2 0 0 1 0 4"/></symbol><use href="#ai:ri:movie-2-line"></use>  </svg> <span>影视资源</span> <svg width="1em" height="1em" class="sidebar-more text-sm" data-icon="ri:arrow-right-s-line">   <symbol id="ai:ri:arrow-right-s-line" viewBox="0 0 24 24"><path fill="currentColor" d="m13.172 12l-4.95-4.95l1.414-1.413L16 12l-6.364 6.364l-1.414-1.415z"/></symbol><use href="#ai:ri:arrow-right-s-line"></use>  </svg> </a> <ul class="submenu"> <li> <a href="#category-anime" class="smooth" data-category-id="anime"> <span>动漫网站</span> </a> </li><li> <a href="#category-影视网站" class="smooth" data-category-id="影视网站"> <span>影视网站</span> </a> </li><li> <a href="#category-subtitle" class="smooth" data-category-id="subtitle"> <span>字幕资源</span> </a> </li> </ul> </li><li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-musictool" class="smooth" data-category-id="musictool"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:music-2-line">   <symbol id="ai:ri:music-2-line" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3v14a4 4 0 1 1-2-3.465V5H9v12a4 4 0 1 1-2-3.465V3zM5 19a2 2 0 1 0 0-4a2 2 0 0 0 0 4m11 0a2 2 0 1 0 0-4a2 2 0 0 0 0 4"/></symbol><use href="#ai:ri:music-2-line"></use>  </svg> <span>音乐资源</span>  </a>  </li><li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-reader" class="smooth" data-category-id="reader"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:book-line">   <symbol id="ai:ri:book-line" viewBox="0 0 24 24"><path fill="currentColor" d="M3 18.5V5a3 3 0 0 1 3-3h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5A3.5 3.5 0 0 1 3 18.5M19 20v-3H6.5a1.5 1.5 0 0 0 0 3zM5 15.337A3.5 3.5 0 0 1 6.5 15H19V4H6a1 1 0 0 0-1 1z"/></symbol><use href="#ai:ri:book-line"></use>  </svg> <span>阅读</span>  </a>  </li><li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-website" class="smooth" data-category-id="website"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:global-line">   <symbol id="ai:ri:global-line" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10m-2.29-2.333A17.9 17.9 0 0 1 8.027 13H4.062a8.01 8.01 0 0 0 5.648 6.667M10.03 13c.151 2.439.848 4.73 1.97 6.752A15.9 15.9 0 0 0 13.97 13zm9.908 0h-3.965a17.9 17.9 0 0 1-1.683 6.667A8.01 8.01 0 0 0 19.938 13M4.062 11h3.965A17.9 17.9 0 0 1 9.71 4.333A8.01 8.01 0 0 0 4.062 11m5.969 0h3.938A15.9 15.9 0 0 0 12 4.248A15.9 15.9 0 0 0 10.03 11m4.259-6.667A17.9 17.9 0 0 1 15.973 11h3.965a8.01 8.01 0 0 0-5.648-6.667"/></symbol><use href="#ai:ri:global-line"></use>  </svg> <span>网站工具</span>  </a>  </li><li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-animephoto" class="smooth" data-category-id="animephoto"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:image-line">   <symbol id="ai:ri:image-line" viewBox="0 0 24 24"><path fill="currentColor" d="M2.992 21A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3h18.016c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993zM20 15V5H4v14L14 9zm0 2.828l-6-6L6.828 19H20zM8 11a2 2 0 1 1 0-4a2 2 0 0 1 0 4"/></symbol><use href="#ai:ri:image-line"></use>  </svg> <span>壁纸网站</span>  </a>  </li><li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-cloud" class="smooth" data-category-id="cloud"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:cloud-line">   <symbol id="ai:ri:cloud-line" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 1 6.992 7.339A6 6 0 0 1 17 21H7A6 6 0 0 1 5.008 9.339A7 7 0 0 1 12 2m0 2a5 5 0 0 0-4.994 5.243l.07 1.488l-1.404.494A4.002 4.002 0 0 0 7 19h10a4 4 0 1 0-3.796-5.265l-1.898-.633A6 6 0 0 1 17 9a5 5 0 0 0-5-5"/></symbol><use href="#ai:ri:cloud-line"></use>  </svg> <span>网盘搜索</span>  </a>  </li><li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-editor" class="smooth" data-category-id="editor"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:macbook-line">   <symbol id="ai:ri:macbook-line" viewBox="0 0 24 24"><path fill="currentColor" d="M4 5v11h16V5zm-2-.993C2 3.451 2.455 3 2.992 3h18.016c.548 0 .992.449.992 1.007V18H2zM1 19h22v2H1z"/></symbol><use href="#ai:ri:macbook-line"></use>  </svg> <span>编程资源</span>  </a>  </li><li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-picturetool" class="smooth" data-category-id="picturetool"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="icon-fw icon-lg mr-2" data-icon="ri:image-line">   <use href="#ai:ri:image-line"></use>  </svg> <span>图片工具</span>  </a>  </li><li class="sidebar-item "> <!-- Sidebar 组件中的分类链接部分 --> <a href="#category-games" class="smooth" data-category-id="games"> <svg width="1em" height="1em" class="icon-fw icon-lg mr-2" data-icon="ri:gamepad-line">   <symbol id="ai:ri:gamepad-line" viewBox="0 0 24 24"><path fill="currentColor" d="M17 4a6 6 0 0 1 6 6v4a6 6 0 0 1-6 6H7a6 6 0 0 1-6-6v-4a6 6 0 0 1 6-6zm0 2H7a4 4 0 0 0-3.995 3.8L3 10v4a4 4 0 0 0 3.8 3.995L7 18h10a4 4 0 0 0 3.995-3.8L21 14v-4a4 4 0 0 0-3.8-3.995zm-7 3v2h2v2H9.999L10 15H8l-.001-2H6v-2h2V9zm8 4v2h-2v-2zm-2-4v2h-2V9z"/></symbol><use href="#ai:ri:gamepad-line"></use>  </svg> <span>休闲游戏</span>  </a>  </li> </ul> </div> </div> </div> <!-- 底部固定链接 --> <!-- <div class="border-top py-2 border-color">
+      <div class="flex-bottom">
+        <ul>
+          <li class="sidebar-item">
+            <a href="/submit" target="_blank">
+              <Icon name="ri:upload-2-line" class="icon-fw icon-lg mr-2" />
+              <span>网站提交</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="#friendlink" class="smooth">
+              <Icon name="ri:links-line" class="icon-fw icon-lg mr-2" />
+              <span>友情链接</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="/about">
+              <Icon name="ri:information-line" class="icon-fw icon-lg mr-2" />
+              <span>关于导航</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div> --> <!-- 侧栏交互与平滑滚动脚本 --> <script>
+document.addEventListener('DOMContentLoaded', () => {
+  function smoothScrollTo(target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const titleEl = target.querySelector('h4');
+    if (titleEl) {
+      const prev = {
+        display: titleEl.style.display,
+        padding: titleEl.style.padding,
+        bg: titleEl.style.backgroundColor,
+        shadow: titleEl.style.boxShadow,
+        radius: titleEl.style.borderRadius,
+      };
+      titleEl.style.display = 'inline-block';
+      titleEl.style.padding = '2px 8px';
+      titleEl.style.backgroundColor = 'rgba(255, 229, 100, 0.25)';
+      titleEl.style.boxShadow = '0 0 0 2px rgba(255, 196, 0, 0.35)';
+      titleEl.style.borderRadius = '6px';
+      setTimeout(() => {
+        titleEl.style.display = prev.display;
+        titleEl.style.padding = prev.padding;
+        titleEl.style.backgroundColor = prev.bg;
+        titleEl.style.boxShadow = prev.shadow;
+        titleEl.style.borderRadius = prev.radius;
+      }, 1200);
+    }
+  }
+
+  function isHomePage() {
+    return window.location.pathname === '/' || window.location.pathname === '/index.html';
+  }
+  function closeSidebarDrawer(){
+    const sb = document.getElementById('sidebar');
+    if (sb) { sb.classList.remove('show'); sb.style.display = 'none'; }
+    document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+    document.body.style.overflow = '';
+  }
+
+  // 避免与独立的移动端侧栏脚本重复绑定，移动端交互由 mobile-sidebar.ts 负责
+  const isMobile = window.matchMedia('(max-width: 767.98px)').matches;
+  if (isMobile) return;
+
+  // 展开/收起二级菜单：首次点击展开，再次点击导航
+  document.querySelectorAll('.sidebar-menu-inner .sidebar-item > a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = link.closest('.sidebar-item');
+      if (!li) return;
+      const isArrow = (e.target)?.closest?.('.sidebar-more');
+      const hasSubmenu = li.classList.contains('has-submenu');
+
+      if (isArrow) {
+        li.classList.toggle('sidebar-show');
+        return;
+      }
+
+      // 一级分类：如果有子菜单，第一次点击展开；已展开则导航
+      if (hasSubmenu) {
+        const wasOpen = li.classList.contains('sidebar-show');
+        document.querySelectorAll('.sidebar-item.has-submenu').forEach(item => { if (item !== li) item.classList.remove('sidebar-show'); });
+        if (!wasOpen) {
+          li.classList.add('sidebar-show');
+          return;
+        }
+        const categoryId = link.getAttribute('data-category-id');
+        if (!categoryId) return;
+        const targetId = `category-${categoryId.toLowerCase().replace(/\\s+/g, '-')}`;
+        if (!isHomePage()) {
+          try{sessionStorage.setItem('needHashScroll','1');}catch(_){}
+          closeSidebarDrawer();
+          window.location.href = `/#${targetId}`;
+          return;
+        }
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) { closeSidebarDrawer(); setTimeout(() => smoothScrollTo(targetElement), 0); }
+        return;
+      }
+
+      const categoryId = link.getAttribute('data-category-id');
+      if (!categoryId) return;
+      const targetId = `category-${categoryId.toLowerCase().replace(/\s+/g, '-')}`;
+      if (!isHomePage()) {
+        try{sessionStorage.setItem('needHashScroll','1');}catch(_){}
+        closeSidebarDrawer();
+        window.location.href = `/#${targetId}`;
+        return;
+      }
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) { closeSidebarDrawer(); setTimeout(() => smoothScrollTo(targetElement), 0); }
+    });
+  });
+
+  // 子项分类链接：在非首页跳到根路径锚点，在首页平滑滚动
+  document.querySelectorAll('.sidebar-menu-inner .sidebar-item ul li a[data-category-id]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const categoryId = link.getAttribute('data-category-id');
+      if (!categoryId) return;
+      const targetId = `category-${categoryId.toLowerCase().replace(/\s+/g, '-')}`;
+      if (!isHomePage()) {
+        closeSidebarDrawer();
+        window.location.href = `/#${targetId}`;
+        return;
+      }
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) { closeSidebarDrawer(); smoothScrollTo(targetElement); }
+    });
+  });
+
+  // 处理友情链接
+  document.querySelectorAll('a[href="#friendlink"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!isHomePage()) {
+        window.location.href = '/#friendlink';
+        return;
+      }
+      const targetElement = document.getElementById('friendlink');
+      if (targetElement) smoothScrollTo(targetElement);
+    });
+  });
+
+  // 页面加载时检查哈希并滚动（仅在首页）
+  if (isHomePage() && window.location.hash) {
+    let need = false;
+    try{need = sessionStorage.getItem('needHashScroll') === '1'; sessionStorage.removeItem('needHashScroll');}catch(_){}
+    if (need) {
+      const targetId = window.location.hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) setTimeout(() => smoothScrollTo(targetElement), 300);
+    }
+  }
+});
+</script></div></div> <div class="main-content flex-fill" data-astro-cid-sckkx6r4> <div class="big-header-banner"> <div id="header" class="page-header sticky"> <div class="navbar navbar-expand-md"> <div class="container-fluid p-0"> <div class="collapse navbar-collapse order-2 order-md-1"> <div class="header-mini-btn"> <label> <input id="mini-button" type="checkbox"> <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"> <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55"></path> <path class="line--2" d="M0 50h80"></path> <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45"></path> </svg> </label> </div> <ul class="navbar-nav site-menu" style="margin-right: 16px;"> <li> <a href="/"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="icon-fw icon-lg mr-2" data-icon="ri:global-line">   <use href="#ai:ri:global-line"></use>  </svg> <span>首页</span> </a> <ul class="sub-menu"></ul> </li> <li> <a href="/about"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="icon-fw icon-lg mr-2" data-icon="ri:book-line">   <use href="#ai:ri:book-line"></use>  </svg> <span>关于比塔网</span> </a> <ul class="sub-menu"></ul> </li> </ul> <div class="rounded-circle weather"> <div id="he-plugin-simple" style="display: contents;"></div> <script type="module">window.WIDGET={CONFIG:{modules:"01234",background:5,tmpColor:"E4C600",tmpSize:14,cityColor:"E4C600",citySize:14,aqiColor:"#E4C600",aqiSize:14,weatherIconSize:24,alertIconSize:18,padding:"10px 10px 10px 10px",shadow:"1",language:"auto",borderRadius:5,fixed:"false",vertical:"middle",horizontal:"left",key:"085791e805a24491b43b06cf58ab31e7"}};</script> </div> </div> <ul class="nav navbar-menu text-xs order-1 order-md-2"> <li class="nav-search ml-3 ml-md-4"> <a href="javascript:" data-toggle="modal" data-target="#search-modal"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="icon-2x" data-icon="ri:search-line">   <use href="#ai:ri:search-line"></use>  </svg> </a> </li> <li class="nav-item d-md-none mobile-menu ml-3 ml-md-4"> <a href="javascript:" id="sidebar-switch"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="icon-2x" data-icon="ri:apps-2-line">   <use href="#ai:ri:apps-2-line"></use>  </svg> </a> </li> </ul> </div> </div> </div> <div class="placeholder" style="height:74px"></div> <!-- 原有侧边栏折叠 + 头部背景切换脚本 --> <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.querySelector('.big-header-banner');
+            const miniBtn = document.getElementById('mini-button');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.querySelector('.main-content');
+
+            const applyMini = (on, initial) => {
+                if (!sidebar) return;
+                const DURATION = 350;
+                if (on) {
+                    if (!initial) {
+                        if (mainContent) mainContent.classList.add('sidebar-collapsing');
+                        sidebar.classList.add('collapsing');
+                    }
+                    requestAnimationFrame(() => { sidebar.classList.add('mini-sidebar'); });
+                    try {
+                        const items = sidebar.querySelectorAll('.sidebar-item.has-submenu.sidebar-show');
+                        items.forEach(el => el.classList.remove('sidebar-show'));
+                    } catch (e) {}
+                    if (!initial) {
+                        setTimeout(() => {
+                            if (mainContent) mainContent.classList.remove('sidebar-collapsing');
+                            sidebar.classList.remove('collapsing');
+                        }, DURATION);
+                    }
+                } else {
+                    if (!initial) {
+                        if (mainContent) mainContent.classList.add('sidebar-expanding');
+                        sidebar.classList.add('expanding');
+                    }
+                    requestAnimationFrame(() => { sidebar.classList.remove('mini-sidebar'); });
+                    if (!initial) {
+                        setTimeout(() => {
+                            if (mainContent) mainContent.classList.remove('sidebar-expanding');
+                            sidebar.classList.remove('expanding');
+                        }, DURATION);
+                    }
+                }
+                if (miniBtn) miniBtn.checked = !!on;
+                localStorage.setItem('miniSidebar', on ? '1' : '0');
+            };
+
+            const stored = localStorage.getItem('miniSidebar') === '1';
+            applyMini(stored, true);
+            if (miniBtn) {
+                miniBtn.addEventListener('change', (e) => applyMini(e.target.checked, false));
+            }
+
+            const toggleHeaderBg = () => {
+                const y = window.scrollY || document.documentElement.scrollTop || 0;
+                if (!banner) return;
+                if (y > 10) banner.classList.add('header-bg');
+                else banner.classList.remove('header-bg');
+            };
+            toggleHeaderBg();
+            window.addEventListener('scroll', toggleHeaderBg, { passive: true });
+        });
+    </script> </div>  <div id="content" class="content-site customize-site" data-astro-cid-sckkx6r4>  <div class="container-fluid" data-astro-cid-cfftgubm> <div class="row justify-content-center" data-astro-cid-cfftgubm> <div class="col-lg-12 col-xl-8" data-astro-cid-cfftgubm> <!-- 页面标题 --> <div class="text-center mb-5" data-astro-cid-cfftgubm> <h1 class="display-4 mb-3 font-weight-bold" data-astro-cid-cfftgubm>
+网站提交
+</h1> <p class="lead text-muted" data-astro-cid-cfftgubm>分享你发现的优质网站，让更多人受益</p> </div> <!-- 提交指南 --> <div class="row mb-5" data-astro-cid-cfftgubm> <div class="col-md-4 mb-4" data-astro-cid-cfftgubm> <div class="card h-100 shadow-sm border-0" data-astro-cid-cfftgubm> <div class="card-body text-center" data-astro-cid-cfftgubm> <div class="mb-3" data-astro-cid-cfftgubm> <svg width="1em" height="1em" class="icon-2x text-warning" data-astro-cid-cfftgubm="true" data-icon="ri:sun-line">   <symbol id="ai:ri:sun-line" viewBox="0 0 24 24"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12a6 6 0 0 1 0 12m0-2a4 4 0 1 0 0-8a4 4 0 0 0 0 8M11 1h2v3h-2zm0 19h2v3h-2zM3.515 4.929l1.414-1.414L7.05 5.636L5.636 7.05zM16.95 18.364l1.414-1.414l2.121 2.121l-1.414 1.414zm2.121-14.85l1.414 1.415l-2.121 2.121l-1.414-1.414zM5.636 16.95l1.414 1.414l-2.121 2.121l-1.414-1.414zM23 11v2h-3v-2zM4 11v2H1v-2z"/></symbol><use href="#ai:ri:sun-line"></use>  </svg> </div> <h5 class="card-title" data-astro-cid-cfftgubm>优质内容</h5> <p class="card-text text-muted" data-astro-cid-cfftgubm>推荐实用、有价值的网站，避免重复或低质量内容</p> </div> </div> </div> <div class="col-md-4 mb-4" data-astro-cid-cfftgubm> <div class="card h-100 shadow-sm border-0" data-astro-cid-cfftgubm> <div class="card-body text-center" data-astro-cid-cfftgubm> <div class="mb-3" data-astro-cid-cfftgubm> <svg width="1em" height="1em" class="icon-2x text-info" data-astro-cid-cfftgubm="true" data-icon="ri:file-info-line">   <symbol id="ai:ri:file-info-line" viewBox="0 0 24 24"><path fill="currentColor" d="M15 4H5v16h14V8h-4zM3 2.992C3 2.444 3.447 2 3.999 2H16l5 5v13.993A1 1 0 0 1 20.007 22H3.993A1 1 0 0 1 3 21.008zM11 11h2v6h-2zm0-4h2v2h-2z"/></symbol><use href="#ai:ri:file-info-line"></use>  </svg> </div> <h5 class="card-title" data-astro-cid-cfftgubm>详细信息</h5> <p class="card-text text-muted" data-astro-cid-cfftgubm>请提供网站名称、链接、简介等完整信息</p> </div> </div> </div> <div class="col-md-4 mb-4" data-astro-cid-cfftgubm> <div class="card h-100 shadow-sm border-0" data-astro-cid-cfftgubm> <div class="card-body text-center" data-astro-cid-cfftgubm> <div class="mb-3" data-astro-cid-cfftgubm> <svg width="1em" height="1em" class="icon-2x text-success" data-astro-cid-cfftgubm="true" data-icon="ri:time-line">   <symbol id="ai:ri:time-line" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16m1-8h4v2h-6V7h2z"/></symbol><use href="#ai:ri:time-line"></use>  </svg> </div> <h5 class="card-title" data-astro-cid-cfftgubm>审核时间</h5> <p class="card-text text-muted" data-astro-cid-cfftgubm>我们会在1-3个工作日内审核并添加优质网站</p> </div> </div> </div> </div> <!-- 提交表单说明 --> <div class="card mb-4 border-0 shadow-sm" data-astro-cid-cfftgubm> <div class="card-body" data-astro-cid-cfftgubm> <h4 class="card-title mb-3" data-astro-cid-cfftgubm> <svg width="1em" height="1em" class="text-primary mr-2" data-astro-cid-cfftgubm="true" data-icon="ri:send-plane-line">   <symbol id="ai:ri:send-plane-line" viewBox="0 0 24 24"><path fill="currentColor" d="m21.727 2.957l-5.454 19.086c-.15.529-.475.553-.717.07L11 13L1.923 9.37c-.51-.205-.503-.51.034-.689L21.043 2.32c.529-.176.832.12.684.638m-2.692 2.14L6.812 9.17l5.637 2.255l3.04 6.08z"/></symbol><use href="#ai:ri:send-plane-line"></use>  </svg>
+提交你的网站推荐
+</h4> <div class="alert alert-info border-0" role="alert" data-astro-cid-cfftgubm> <svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2" data-astro-cid-cfftgubm="true" data-icon="ri:file-info-line">   <use href="#ai:ri:file-info-line"></use>  </svg> <strong data-astro-cid-cfftgubm>提交格式建议：</strong> <ul class="mb-0 mt-2" data-astro-cid-cfftgubm> <li data-astro-cid-cfftgubm><strong data-astro-cid-cfftgubm>网站名称：</strong>网站的中文或英文名称</li> <li data-astro-cid-cfftgubm><strong data-astro-cid-cfftgubm>网站链接：</strong>完整的网站URL地址</li> <li data-astro-cid-cfftgubm><strong data-astro-cid-cfftgubm>网站简介：</strong>简要描述网站的功能和特色</li> <li data-astro-cid-cfftgubm><strong data-astro-cid-cfftgubm>推荐理由：</strong>为什么推荐这个网站</li> <li data-astro-cid-cfftgubm><strong data-astro-cid-cfftgubm>分类建议：</strong>建议归类到哪个分类下</li> </ul> </div> <p class="text-muted mb-0" data-astro-cid-cfftgubm> <svg width="1em" height="1em" class="text-danger mr-1" data-astro-cid-cfftgubm="true" data-icon="ri:heart-line">   <symbol id="ai:ri:heart-line" viewBox="0 0 24 24"><path fill="currentColor" d="M12.001 4.529a6 6 0 0 1 8.242.228a6 6 0 0 1 .236 8.236l-8.48 8.492l-8.478-8.492a6 6 0 0 1 8.48-8.464m6.826 1.641a4 4 0 0 0-5.49-.153l-1.335 1.198l-1.336-1.197a4 4 0 0 0-5.686 5.605L12 18.654l7.02-7.03a4 4 0 0 0-.193-5.454"/></symbol><use href="#ai:ri:heart-line"></use>  </svg>
+感谢你的分享！每一个推荐都让我们的导航站变得更加丰富和实用。
+</p> </div> </div> <!-- 评论区 --> <div class="card border-0 shadow-sm" data-astro-cid-cfftgubm> <div class="card-header bg-white border-0 pb-0" data-astro-cid-cfftgubm> <h5 class="mb-0" data-astro-cid-cfftgubm> <svg width="1em" height="1em" class="text-primary mr-2" data-astro-cid-cfftgubm="true" data-icon="ri:message-3-line">   <symbol id="ai:ri:message-3-line" viewBox="0 0 24 24"><path fill="currentColor" d="M2 8.994A5.99 5.99 0 0 1 8 3h8c3.313 0 6 2.695 6 5.994V21H8c-3.313 0-6-2.695-6-5.994zM20 19V8.994A4.004 4.004 0 0 0 16 5H8a3.99 3.99 0 0 0-4 3.994v6.012A4.004 4.004 0 0 0 8 19zm-6-8h2v2h-2zm-6 0h2v2H8z"/></symbol><use href="#ai:ri:message-3-line"></use>  </svg>
+在下方留言提交你的网站推荐
+</h5> </div> <div class="card-body" data-astro-cid-cfftgubm> <div id="Comments" data-page-key="/submit/"></div> <script>
+  function initArtalk() {
+    const container = document.getElementById('Comments');
+    if (!container) return;
+
+    const pageKey = container.getAttribute('data-page-key');
+    if (!pageKey) return;
+
+    container.innerHTML = '';
+
+    const serverUrl = 'https://artalk.blueke.top/';
+
+    const isNightMode = () => {
+      const b = document.body.classList;
+      const h = document.documentElement.classList;
+      return (
+        b.contains('dark') ||
+        b.contains('night') ||
+        b.contains('dark-mode') ||
+        h.contains('dark') ||
+        b.contains('io-black-mode')
+      );
+    };
+
+    const tryConfigEndpoints = async () => {
+      const endpoints = [
+        `${serverUrl}api/v2/conf`,
+        `${serverUrl}api/conf`,
+      ];
+      for (const url of endpoints) {
+        try {
+          const res = await fetch(url, { mode: 'cors' });
+          if (res.ok) return true;
+        } catch {}
+      }
+      return false;
+    };
+
+    tryConfigEndpoints().then(async ok => {
+      if (!ok) {
+        const container = document.getElementById('Comments');
+        if (container) {
+          container.innerHTML = '<div style="padding:8px;color:#b00;background:#fee;border:1px solid #f99;border-radius:6px;">Artalk 后端未就绪或地址错误，请检查 serverUrl 与反向代理配置</div>';
+        }
+        return;
+      }
+
+      if (!document.querySelector('link[href="https://unpkg.com/artalk@2.9.1/dist/Artalk.css"]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://unpkg.com/artalk@2.9.1/dist/Artalk.css';
+        document.head.appendChild(link);
+      }
+
+      import('https://esm.sh/artalk@2.9.1').then(ArtalkModule => {
+        const Artalk = ArtalkModule.default || ArtalkModule;
+        const instance = Artalk.init({
+          el: '#Comments',
+          server: serverUrl,
+          site: 'Nav',
+          pageKey: container.getAttribute('data-page-key'),
+          pageTitle: document.title,
+          locale: 'zh-CN',
+          noComment: '快来评论吧！',
+          darkMode: isNightMode(),
+          avatar: {
+            default: '/favicon.ico',
+            gravatar: { mirror: 'https://cravatar.cn/avatar/' }
+          }
+        });
+        window.artalkInstance = instance;
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArtalk);
+  } else {
+    initArtalk();
+  }
+  document.addEventListener('astro:page-load', initArtalk);
+
+  // 同步主题：监听 body 和 html 的 class 变化，优先使用 setDarkMode
+  if (!window.artalkThemeObserver) {
+    const applyTheme = () => {
+      const isDark =
+        document.body.classList.contains('io-black-mode') ||
+        document.documentElement.classList.contains('dark') ||
+        document.body.classList.contains('dark') ||
+        document.body.classList.contains('night') ||
+        document.body.classList.contains('dark-mode');
+
+      if (window.artalkInstance && typeof window.artalkInstance.setDarkMode === 'function') {
+        window.artalkInstance.setDarkMode(isDark);
+      } else {
+        initArtalk();
+      }
+    };
+
+    new MutationObserver(applyTheme).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    new MutationObserver(applyTheme).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    window.artalkThemeObserver = true;
+  }
+</script>  </div> </div> </div> </div> </div>   </div> <footer class="main-footer footer-type-1 text-xs"> <div id="footer-tools" class="d-flex flex-column"> <a href="javascript:" id="go-to-up" class="btn rounded-circle go-up m-1" rel="go-top"> <svg width="1em" height="1em" data-icon="ri:arrow-up-line">   <symbol id="ai:ri:arrow-up-line" viewBox="0 0 24 24"><path fill="currentColor" d="M13 7.828V20h-2V7.828l-5.364 5.364l-1.414-1.414L12 4l7.778 7.778l-1.414 1.414z"/></symbol><use href="#ai:ri:arrow-up-line"></use>  </svg> </a> <a href="javascript:" data-toggle="modal" data-target="#search-modal" class="btn rounded-circle m-1" rel="search" one-link-mark="yes"> <svg width="1em" height="1em" viewBox="0 0 24 24" data-icon="ri:search-line">   <use href="#ai:ri:search-line"></use>  </svg> </a> <div class="theme-switch-wrapper" data-astro-cid-fsyatss7> <button aria-label="切换主题模式" class="btn rounded-circle theme-switch-btn m-1 transition-all duration-200" id="scheme-switch" title="点击切换：亮色 ⇄ 暗色" data-astro-cid-fsyatss7> <span id="icon-moon" class="text-lg" hidden data-astro-cid-fsyatss7> <svg width="1em" height="1em" data-astro-cid-fsyatss7="true" data-icon="ri:moon-line">   <symbol id="ai:ri:moon-line" viewBox="0 0 24 24"><path fill="currentColor" d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2h.1A6.98 6.98 0 0 0 10 7m-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938A8 8 0 0 0 4 12"/></symbol><use href="#ai:ri:moon-line"></use>  </svg> </span> <span id="icon-sun" class="text-lg" data-astro-cid-fsyatss7> <svg width="1em" height="1em" viewBox="0 0 24 24" data-astro-cid-fsyatss7="true" data-icon="ri:sun-line">   <use href="#ai:ri:sun-line"></use>  </svg> </span> </button> <script type="module">
+    const LIGHT_MODE = 'light';
+    const DARK_MODE = 'dark';
+    let mode = LIGHT_MODE;
+    let isAnimating = false;
+
+    const btn = document.getElementById('scheme-switch');
+    const iconMoon = document.getElementById('icon-moon');
+    const iconSun = document.getElementById('icon-sun');
+
+    function getStoredTheme(){
+      try{ const t = localStorage.getItem('theme'); return t === DARK_MODE ? DARK_MODE : LIGHT_MODE; }catch{ return LIGHT_MODE; }
+    }
+    function applyThemeToDocument(theme){
+      const body = document.body; if(!body) return;
+      body.classList.remove('io-grey-mode','io-black-mode');
+      body.classList.add(theme === DARK_MODE ? 'io-black-mode' : 'io-grey-mode');
+    }
+    function setTheme(theme){ try{ localStorage.setItem('theme', theme); }catch{} }
+
+    function updateIcon() {
+      const showMoon = mode === DARK_MODE;
+      if (iconMoon && iconSun) {
+        iconMoon.hidden = !showMoon;
+        iconSun.hidden = showMoon;
+      }
+      if (btn) {
+        btn.classList.toggle('opacity-75', isAnimating);
+      }
+    }
+
+    const storedTheme = getStoredTheme();
+    mode = (storedTheme === LIGHT_MODE || storedTheme === DARK_MODE) ? storedTheme : LIGHT_MODE;
+    applyThemeToDocument(mode);
+    updateIcon();
+
+    function triggerThemeTransition(event, newMode) {
+      if (isAnimating || mode === newMode) return;
+      isAnimating = true;
+
+      const trigger = () => {
+        mode = newMode;
+        setTheme(mode);
+        applyThemeToDocument(mode);
+        updateIcon();
+        try{ window.dispatchEvent(new CustomEvent('theme:changed', { detail: { mode } })); }catch{}
+        try{ if (window && window.__applyBackgrounds) { window.__applyBackgrounds(); } }catch{}
+      };
+
+      if (!document.startViewTransition) {
+        trigger();
+        isAnimating = false;
+        updateIcon();
+        return;
+      }
+
+      const transition = document.startViewTransition(trigger);
+      const x = event.clientX;
+      const y = event.clientY;
+
+      transition.ready.then(() => {
+        const endRadius = Math.hypot(
+          Math.max(x, innerWidth - x),
+          Math.max(y, innerHeight - y),
+        );
+
+        const clipPath = [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${endRadius}px at ${x}px ${y}px)`,
+        ];
+
+        document.documentElement.animate(
+          {
+            clipPath: mode === DARK_MODE ? clipPath : [...clipPath].reverse(),
+          },
+          {
+            duration: 600,
+            easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            pseudoElement: mode === DARK_MODE ? "::view-transition-new(root)" : "::view-transition-old(root)",
+          },
+        );
+      });
+
+      transition.finished.then(() => {
+        isAnimating = false;
+        updateIcon();
+      });
+    }
+
+    function toggleScheme(event) {
+      const newMode = mode === LIGHT_MODE ? DARK_MODE : LIGHT_MODE;
+      triggerThemeTransition(event, newMode);
+    }
+
+    if (btn) btn.addEventListener('click', toggleScheme);
+  </script> </div>  </div> <!-- 底部信息 --> <div class="footer-inner transition text-50 text-sm text-center"> <div class="flex flex-col items-center"> <!-- 运行时间和访问量合并到同一行 --> <div id="runtime-container" class="flex items-center justify-center space-x-2"> <span id="runningtime"></span> <span>|</span> <span>本网站已访问 <span id="busuanzi_value_page_pv" style=" color: hsl(192 98% 55%); font-weight: bold; "></span> 次</span> <span>|</span> <span>总访客 <span id="busuanzi_value_site_uv" style=" color: hsl(192 98% 55%); font-weight: bold; "></span> 人</span> <div class="flex items-center justify-between w-full"> <span class="text-center"> <a href="https://www.bitab.net/">比塔网: bitab.net</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="text-center">备案号: <a href="https://beian.miit.gov.cn/">闽ICP备2024035729号</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="text-center">email: vnotes@126.com</span> </div> </div> <script type="text/javascript">function runtime() {
+        const t = new Date("06/25/2025 15:00:00"),
+            n = new Date,
+            s = n - t,
+            e = Math.floor(s / 1e3),
+            o = Math.floor(e / 86400),
+            i = Math.floor(e % 86400 / 3600),
+            a = Math.floor(e % 3600 / 60),
+            r = e % 60;
+        document.getElementById("runningtime").innerHTML = `⏱️本站已运行: ${o}天${i}小时${a}分${r}秒 `;
+    }
+    setInterval(runtime, 1e3);
+    </script> <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> </div> <!-- 移除未使用的交互脚本：Touch Punch 与 Clipboard --> <!-- 控制右下角搜索栏>... --> <script type="text/javascript" id="popper-js-extra">
+var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/onenav\/images\/add.png","order":"asc","formpostion":"top","defaultclass":"io-grey-mode","isCustomize":"1","icourl":"","icopng":".png","urlformat":"1","customizemax":"10","newWindow":"0","lazyload":"1","minNav":"1","loading":"1","hotWords":"baidu","classColumns":" col-sm-6 col-md-4 col-xl-5a col-xxl-6a ","apikey":"TWpBeU1UVTNOekk1TWpVMEIvZ1M2bFVIQllUMmxsV1dZelkxQTVPVzB3UW04eldGQmxhM3BNWW14bVNtWk4="};
+</script> <!-- <script type='text/javascript' src='/js/popper.min.js' id='popper-js'></script> --> <!-- 貌似是适配不同设备的js，不能换成网络引用，影响侧栏 --> <!-- <script type='text/javascript' src='/js/theia-sticky-sidebar-1.5.0.js' id='sidebar-js'></script> --> <!-- 已移除第三方 lazyload，改用原生懒加载与 IntersectionObserver --> <script id="native-lazyload" defer>
+(() => {
+  const imgs = document.querySelectorAll('img[data-src]');
+  if (!imgs.length) return;
+  const fallbackSrc = '/images/logo.png';
+  const swap = (img) => {
+    const src = img.getAttribute('data-src');
+    if (!src) return;
+    img.src = src;
+    img.removeAttribute('data-src');
+    img.addEventListener('error', () => { img.src = fallbackSrc; }, { once: true });
+  };
+  if (!('IntersectionObserver' in window)) {
+    imgs.forEach(swap);
+    return;
+  }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const img = e.target;
+        swap(img);
+        obs.unobserve(img);
+      }
+    });
+  });
+  imgs.forEach(img => obs.observe(img));
+})();
+</script> <script>
+(function(){
+  var mm = window.matchMedia('(max-width: 991.98px)');
+  var enabled = false;
+  var btn = document.getElementById('sidebar-switch');
+  var sidebar = document.getElementById('sidebar');
+  var panel = sidebar ? sidebar.querySelector('.sidebar-nav-inner') : null;
+  function isHomePage(){
+    return window.location.pathname === '/' || window.location.pathname === '/index.html';
+  }
+  function openSidebar(){
+    if(!sidebar) return;
+    sidebar.style.display = 'block';
+    sidebar.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar(){
+    if(!sidebar) return;
+    sidebar.classList.remove('show');
+    sidebar.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function smoothScrollTo(target){
+    if(!target) return;
+    try{ target.scrollIntoView({ behavior: 'smooth', block: 'center' }); }catch(e){}
+  }
+  function onPrimaryClick(e){
+    var link = e.currentTarget;
+    e.preventDefault();
+    e.stopPropagation();
+    var li = link.closest('.sidebar-item');
+    if(!li) return;
+    var arrow = (e.target && e.target.closest) ? e.target.closest('.sidebar-more') : null;
+    var hasSubmenu = li.classList.contains('has-submenu');
+    if(arrow){ li.classList.toggle('sidebar-show'); return; }
+    if(hasSubmenu){
+      var wasOpen = li.classList.contains('sidebar-show');
+      document.querySelectorAll('.sidebar-item.has-submenu').forEach(function(item){ if(item !== li) item.classList.remove('sidebar-show'); });
+      if(!wasOpen){ li.classList.add('sidebar-show'); return; }
+    }
+    var cid = link.getAttribute('data-category-id') || '';
+    if(!cid) return;
+    var targetId = 'category-' + cid.toLowerCase().replace(/\s+/g,'-');
+    if(!isHomePage()){ window.location.href = '/#' + targetId; return; }
+    var targetEl = document.getElementById(targetId);
+    if(targetEl){ smoothScrollTo(targetEl); }
+  }
+  function onSecondaryClick(e){
+    var link = e.currentTarget;
+    e.preventDefault();
+    var cid = link.getAttribute('data-category-id') || '';
+    if(!cid) return;
+    var targetId = 'category-' + cid.toLowerCase().replace(/\s+/g,'-');
+    if(!isHomePage()){ window.location.href = '/#' + targetId; return; }
+    var targetEl = document.getElementById(targetId);
+    if(targetEl){ smoothScrollTo(targetEl); }
+  }
+  function enable(){
+    if(enabled) return; enabled = true;
+    if(btn){ btn.addEventListener('click', function(e){ e.preventDefault(); openSidebar(); }); }
+    if(panel){ panel.addEventListener('click', function(e){ e.stopPropagation(); }); }
+    if(sidebar){
+      sidebar.addEventListener('click', function(e){
+        var t = e.target;
+        if(t === sidebar){ e.preventDefault(); closeSidebar(); return; }
+        e.stopPropagation();
+      });
+    }
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeSidebar(); });
+    document.querySelectorAll('.sidebar-menu-inner .sidebar-item > a').forEach(function(el){ el.addEventListener('click', onPrimaryClick); });
+    document.querySelectorAll('.sidebar-menu-inner .sidebar-item ul li a[data-category-id]').forEach(function(el){ el.addEventListener('click', onSecondaryClick); });
+    document.querySelectorAll('#sidebar a[href="#friendlink"]').forEach(function(el){ el.addEventListener('click', function(e){
+      e.preventDefault();
+      if(!isHomePage()){ window.location.href = '/#friendlink'; return; }
+      var targetEl = document.getElementById('friendlink');
+      if(targetEl){ smoothScrollTo(targetEl); }
+    }); });
+  }
+  function disable(){ if(!enabled) return; enabled = false; closeSidebar(); }
+  function apply(m){ if(m.matches) enable(); else disable(); }
+  try{ apply(mm); mm.addEventListener('change', apply); }catch(e){ enable(); }
+})();
+</script></div></footer> </div> </div> </body></html>

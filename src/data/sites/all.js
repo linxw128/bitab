@@ -2,18 +2,18 @@ export default [
     // 常用工具
     {
         subId: 'common',
-        url: 'https://www.blueke.top',
-        title: '主页',
-        description: '作者主页，欢迎来访！',
-        id: 'yuque'
+        url: 'https://www.deepseek.com',
+        title: 'DeepSeek',
+        description: 'DeepSeek',
+        id: 'DeepSeek'
     },
     {
         subId: 'common',
-        url: 'https://blog.blueke.top',
-        title: '博客',
-        description: '作者Blog，欢迎来访！',
-        logo: 'images/logo.png',
-        id: 'yuque'
+        url: 'https://www.qianwen.com',
+        title: '千问',
+        description: '千问',
+        // logo: 'images/logo.png',
+        id: 'qianwen'
     },
     {
         subId: 'common',
@@ -41,10 +41,10 @@ export default [
     },
     {
         subId: 'common',
-        url: 'https://memos.blueke.top/',
-        title: 'Memos',
-        description: '自部署Memos',
-        id: 'memos'
+        url: 'https://www.bilibili.com/',
+        title: '哔哩哔哩',
+        description: '哔哩哔哩',
+        id: 'bilibili'
     },
     {
         subId: 'common',
@@ -281,18 +281,10 @@ export default [
     // 休闲游戏
     {
         subId: 'games',
-        url: '/games/snake',
-        title: '贪吃蛇',
-        description: '简易贪吃蛇',
-        logo: '/images/favicon-48.png',
-        id: 'snake'
-    },
-    {
-        subId: 'games',
-        url: '/games/tetris',
-        title: '俄罗斯方块',
-        description: '简易俄罗斯方块',
-        logo: '/images/favicon-48.png',
-        id: 'tetris'
+        url: 'https://www.4399.com',
+        title: '4399小游戏',
+        description: '4399小游戏',
+        logo: '/images/favicon-4399.ico',
+        id: '4399'
     },
 ]

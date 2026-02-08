@@ -1,6 +1,6 @@
 ---
 import { getCategoryList } from '../data/category';
-import { SITE_LOGO, SITE_LOGO_DARK, SITE_TITLE } from '../settings';
+import { SITE_LOGO, SITE_LOGO_DARK, SITE_LABEL } from '../settings';
 const categories = getCategoryList();
 import { Icon } from 'astro-icon/components';
 ---
@@ -10,13 +10,13 @@ import { Icon } from 'astro-icon/components';
     <div class="sidebar-logo border-bottom border-color">
   <div class="logo overflow-hidden">
     <a href="/" class="logo-expanded inline-flex items-center gap-2" style="color: var(--sidebar-title-color)">
-      <img src={SITE_LOGO} height="40" class="logo-light" alt={SITE_TITLE}>
-      <img src={SITE_LOGO_DARK} height="40" class="logo-dark d-none" alt={SITE_TITLE}>
-      <span style="font-size: 20px; font-weight: bold;">{SITE_TITLE}</span>
+      <img src={SITE_LOGO} height="40" class="logo-light" alt={SITE_LABEL}>
+      <img src={SITE_LOGO_DARK} height="40" class="logo-dark d-none" alt={SITE_LABEL}>
+      <span style="font-size: 20px; font-weight: bold;">{SITE_LABEL}</span>
     </a>
     <a href="/" class="logo-collapsed inline-flex items-center gap-2" style="color: var(--sidebar-title-color)">
-      <img src={SITE_LOGO} height="40" class="logo-light" alt={SITE_TITLE}>
-      <img src={SITE_LOGO_DARK} height="40" class="logo-dark d-none" alt={SITE_TITLE}>
+      <img src={SITE_LOGO} height="40" class="logo-light" alt={SITE_LABEL}>
+      <img src={SITE_LOGO_DARK} height="40" class="logo-dark d-none" alt={SITE_LABEL}>
     </a>
   </div>
 </div>
@@ -69,7 +69,7 @@ import { Icon } from 'astro-icon/components';
 </div>
 
 <!-- 底部固定链接 -->
-    <div class="border-top py-2 border-color">
+    <!-- <div class="border-top py-2 border-color">
       <div class="flex-bottom">
         <ul>
           <li class="sidebar-item">
@@ -92,7 +92,7 @@ import { Icon } from 'astro-icon/components';
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
 
 
 <!-- 侧栏交互与平滑滚动脚本 -->

@@ -6,7 +6,7 @@ import svelte from '@astrojs/svelte';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://nav.blueke.top/',
+  site: 'https://www.bitab.net/',
   integrations: [
     sitemap(),
     svelte(),

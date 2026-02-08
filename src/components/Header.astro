@@ -21,16 +21,16 @@ import { Icon } from 'astro-icon/components'
 
                     <ul class="navbar-nav site-menu" style="margin-right: 16px;">
                         <li>
-                            <a href="./">
+                            <a href="/">
                                 <Icon name="ri:global-line" class="icon-fw icon-lg mr-2" />
                                 <span>首页</span>
                             </a>
                             <ul class="sub-menu"></ul>
                         </li>
                         <li>
-                            <a href="./about">
+                            <a href="/about">
                                 <Icon name="ri:book-line" class="icon-fw icon-lg mr-2" />
-                                <span>关于</span>
+                                <span>关于比塔网</span>
                             </a>
                             <ul class="sub-menu"></ul>
                         </li>
@@ -64,33 +64,6 @@ import { Icon } from 'astro-icon/components'
                 </div>
 
                 <ul class="nav navbar-menu text-xs order-1 order-md-2">
-                    <!-- 一言核心部分 - 修复缓存问题 -->
-                    <li class="nav-item mr-3 mr-lg-0 d-none d-lg-block">
-                        <div id="hitokoto">
-                            <script is:inline>
-                              (function(){
-                                var container = document.getElementById('hitokoto');
-                                if(!container) return;
-                                var s = document.createElement('script');
-                                s.type = 'text/javascript';
-                                s.src = 'https://api.yviii.com/yiyan/yi.php/?syz=js&charset=utf-8';
-                                s.onload = function(){
-                                  try{
-                                    var oldWrite = document.write;
-                                    document.write = function(html){
-                                      try{ if(container) container.textContent = String(html || ''); }
-                                      finally{ document.write = oldWrite; }
-                                    };
-                                    if(window && typeof window.hiyi === 'function') window.hiyi();
-                                  }catch(e){ if(container) container.textContent = '疏影横斜水清浅，暗香浮动月黄昏。'; }
-                                };
-                                s.onerror = function(){ if(container) container.textContent = '疏影横斜水清浅，暗香浮动月黄昏。'; };
-                                document.head.appendChild(s);
-                              })();
-                            </script>
-                        </div>
-                    </li>
-
                     <li class="nav-search ml-3 ml-md-4">
                         <a href="javascript:" data-toggle="modal" data-target="#search-modal">
                             <Icon name="ri:search-line" class="icon-2x" />
