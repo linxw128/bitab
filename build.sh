@@ -3,7 +3,7 @@ rm -fr dist
 pnpm run build  && echo "构建成功" || { echo "构建失败"; exit 1; }
 echo "pack dist"
 tar -czf dist.tar.gz dist
-tar -czf webhook.tar.gz --exclude-from=.env webhook
+# tar -czf webhook.tar.gz webhook
 echo "commit and push"
 git add .
 git commit
