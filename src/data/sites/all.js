@@ -2,6 +2,13 @@ export default [
     // 常用工具
     {
         subId: 'common',
+        url: 'https://www.askgo.ai',
+        title: 'askgo',
+        description: 'askgo',
+        id: 'askgo'
+    },
+    {
+        subId: 'common',
         url: 'https://www.deepseek.com',
         title: 'DeepSeek',
         description: 'DeepSeek',
