@@ -208,6 +208,14 @@ export default [
         logo: '',
         id: 'eimg'
     },
+        {
+        subId: 'picturetool',
+        url: '/draw/index.html',
+        title: '在线画板',
+        description: '在线画板',
+        logo: '',
+        id: 'draw'
+    },
 
     // reader
     {
@@ -250,7 +258,15 @@ export default [
         title: 'opensubtitles',
         description: '备选，用的不多，一天20个下载名额',
         logo: '',
-        id: 'opensubtitles'
+        id: 'fangdai'
+    },
+        {
+        subId: 'subtitle',
+        url: 'fangdai/index.html',
+        title: '房贷计算器',
+        description: '房贷计算器',
+        logo: '',
+        id: 'fangdai'
     },
 
     // website

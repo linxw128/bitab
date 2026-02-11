@@ -8,7 +8,12 @@ import icon from 'astro-icon';
 export default defineConfig({
   site: 'https://www.bitab.net/',
   integrations: [
-    sitemap(),
+    sitemap({
+      customPages: [
+        'https://www.bitab.net/draw/index.html',
+        'https://www.bitab.net/fangdai/index.html',
+      ],
+    }),
     svelte(),
     icon({
       include: {
