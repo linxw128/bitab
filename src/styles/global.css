@@ -552,7 +552,7 @@ html.has-content-bg{background:transparent!important}
 .has-content-bg .page-container{background:transparent!important}
 .has-content-bg .main-content{background:transparent!important}
 .has-content-bg .content-site{background:transparent!important}
-.has-content-bg .card,.has-content-bg .block{background:rgba(255,255,255,0.85)!important}
+.has-content-bg .card,.has-content-bg .block{background:rgba(255,255,255,0.75)!important}
 .has-content-bg .big-header-banner.header-bg .page-header{background:transparent!important}
 .has-content-bg .sidebar .url-card .card{background:transparent!important}
 /* 确保内容层在固定背景层之上 */
@@ -562,5 +562,5 @@ body.has-content-bg .page-container, body.has-content-bg .main-content{position:
   body.has-content-bg{background-attachment:fixed!important}
 }
 
-.io-black-mode.has-content-bg .card,.io-black-mode.has-content-bg .block{background:rgba(44,46,47,0.85)!important}
+.io-black-mode.has-content-bg .card,.io-black-mode.has-content-bg .block{background:rgba(44,46,47,0.75)!important}
 .category-section h4 .icon-fw, .category-section h4 .icon-lg{position:relative;top:2px}

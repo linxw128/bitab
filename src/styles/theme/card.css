@@ -33,7 +33,7 @@
 .edit .url-card.sortable{cursor:move}
 .edit .url-card.sortable .url-body a{pointer-events:none}
 .edit .url-card.sortable .url-body:hover{transform:initial;box-shadow:initial}
-.card,.block{background:#fff;border-width:0;margin-bottom:1rem;box-shadow:0 0 20px -5px rgba(158,158,158,.2);transition:background-color .3s}
+.card,.block{background:rgba(255,255,255,0.75);border-width:0;margin-bottom:1rem;box-shadow:0 0 20px -5px rgba(158,158,158,.2);transition:background-color .3s;border-radius:12px}
 .dropdown-menu{border:unset;box-shadow:0 5px 20px 0 rgba(0,0,0,.15)}
 .dropdown-item:hover{background-color:rgba(136,136,136,.1)}
 .dropdown-item:active,.dropdown-item:focus{color:#333;background-color:rgba(136,136,136,.2)}

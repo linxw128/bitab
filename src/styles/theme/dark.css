@@ -10,8 +10,8 @@
 .io-black-mode,.io-black-mode a:not(.btn),.io-black-mode .button>a{color:#c6c9cf}
 .io-black-mode p,.io-black-mode input.nav-link{color:#bbb}
 .io-black-mode .ajax-loading{background:rgba(27,29,31,.7)!important}
-.io-black-mode .card,.io-black-mode .block{background:#2c2e2f;box-shadow:none;border-color:#2c2e2f}
-.io-black-mode .url-card .card{background:#2c2e2f;border-color:#2c2e2f}
+.io-black-mode .card,.io-black-mode .block{background:rgba(44,46,47,0.75);box-shadow:none;border-color:#2c2e2f;border-radius:12px}
+.io-black-mode .url-card .card{background:rgba(44,46,47,0.75);border-color:#2c2e2f;border-radius:12px}
 .io-black-mode .text-muted{color:#bbb}
 .io-black-mode .text-gray{color:#888}
 .io-black-mode .page-header{background:#2c2e2f;box-shadow:0 0 25px 5px rgba(10,10,10,.25)}
