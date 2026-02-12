@@ -20,16 +20,26 @@ body,html{font-size:14px;}
 .sidebar-menu.flex-fill::-webkit-scrollbar{display:none}
 
 /*搜索框搜索图标颜色*/
-#search button i{color:#6C757D;font-size:18px}
+#search button i{color:#20272b;font-size:18px}
+.io-grey-mode #search button i{color:#20272b;}
+.io-black-mode #search button i{color:#fff;}
 
 /*顶部导航栏字体+图标颜色*/
 .big-header-banner .page-header{color:#ffffff;background:rgba(255,255,255,0);box-shadow:none;transition:color .3s,background-color .3s}
+.io-grey-mode .big-header-banner .page-header{color:#2c2e2f;}
+.io-black-mode .big-header-banner .page-header{color:#ffffff;}
 .big-header-banner.header-bg .page-header{color:initial;backdrop-filter:blur(10px);background:rgba(255,255,255,.7);box-shadow:0 5px 20px 0 rgba(0,0,0,.15)}
 .io-black-mode .big-header-banner.header-bg .page-header{color:#fff;background:#2c2e2f;box-shadow:0 0 25px 5px rgba(10,10,10,.25)}
 .big-header-banner:not(.header-bg) .page-header .navbar-nav>li>a,.big-header-banner:not(.header-bg) .navbar-menu a:not(.dropdown-item){color:#ffffff;}
+.io-grey-mode .big-header-banner:not(.header-bg) .page-header .navbar-nav>li>a,.big-header-banner:not(.header-bg) .navbar-menu a:not(.dropdown-item){color:#2c2e2f;}
+.io-black-mode .big-header-banner:not(.header-bg) .page-header .navbar-nav>li>a,.big-header-banner:not(.header-bg) .navbar-menu a:not(.dropdown-item){color:#ffffff;}
 .big-header-banner:not(.header-bg) .page-header .navbar-nav>li>a:hover,.big-header-banner:not(.header-bg) .navbar-menu a:not(.dropdown-item):hover{color:#dc3545;}
 .big-header-banner:not(.header-bg) .header-mini-btn path{stroke:#ffffff;}
+.io-grey-mode .big-header-banner:not(.header-bg) .header-mini-btn path{stroke:#2c2e2f;}
+.io-black-mode .big-header-banner:not(.header-bg) .header-mini-btn path{stroke:#ffffff;}
 .big-header-banner:not(.header-bg) .header-mini-btn label:hover path{stroke:#ffffff;}
+.io-grey-mode .big-header-banner:not(.header-bg) .header-mini-btn label:hover path{stroke:#2c2e2f;}
+.io-black-mode .big-header-banner:not(.header-bg) .header-mini-btn label:hover path{stroke:#ffffff;}
 
 /* 浅色模式下的默认图标颜色（未显式设置 text-* 时） */
 :global(.io-grey-mode) .icon-fw,
@@ -44,8 +54,9 @@ body,html{font-size:14px;}
 }
 
 /*搜索栏字体+背景*/
-.header-big #search-text{color:#6C757D;}
-.io-black-mode .header-big #search-text{color:#fff;}
+.header-big #search-text{color:#20272b; background-color:#f0f0f0; border:1px solid #e5e7eb;}
+.io-grey-mode .header-big #search-text{color:#20272b; background-color:#f0f0f0;}
+.io-black-mode .header-big #search-text{color:#fff; background-color:#2c2e2f;}
 
 /*搜索activate图标颜色*/
 .header-big .search-type input:checked+label:before{content:'';border-width:8px 8px 0px 8px;border-style:solid;border-color:#ffffff transparent transparent;position:absolute;left:50%;top:0;margin-left:-8px}
@@ -254,7 +265,9 @@ body,html{font-size:14px;}
 .sidebar-menu.flex-fill::-webkit-scrollbar{display:none}
 
 /*搜索框搜索图标颜色*/
-#search button i{color:#6C757D;font-size:18px}
+#search button i{color:#20272b;font-size:18px}
+.io-grey-mode #search button i{color:#20272b;}
+.io-black-mode #search button i{color:#fff;}
 
 /*顶部导航栏字体+图标颜色*/
 .big-header-banner .page-header{color:#ffffff;background:rgba(255,255,255,0);box-shadow:none;transition:color .3s,background-color .3s}
@@ -264,8 +277,9 @@ body,html{font-size:14px;}
 .big-header-banner:not(.header-bg) .header-mini-btn label:hover path{stroke:#ffffff;}
 
 /*搜索栏字体+背景*/
-.header-big #search-text{color:#6C757D;}
-.io-black-mode .header-big #search-text{color:#fff;}
+.header-big #search-text{color:#20272b; background-color:#f0f0f0; border:1px solid #e5e7eb;}
+.io-grey-mode .header-big #search-text{color:#20272b; background-color:#f0f0f0;}
+.io-black-mode .header-big #search-text{color:#fff; background-color:#2c2e2f;}
 
 /*搜索activate图标颜色*/
 .header-big .search-type input:checked+label:before{content:'';border-width:8px 8px 0px 8px;border-style:solid;border-color:#ffffff transparent transparent;position:absolute;left:50%;top:0;margin-left:-8px}
