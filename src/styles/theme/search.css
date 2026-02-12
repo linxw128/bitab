@@ -1,6 +1,6 @@
-.s-type-list{display:none;position:absolute;top:31px;padding:9pt 0;width:70px;background:#fff;border-radius:5px;box-shadow:0 9px 20px rgba(0,0,0,.16)}
+.s-type-list{display:none;position:absolute;top:45px;padding:5pt 0;width:70px;background:#fff;border-radius:5px;box-shadow:0 9px 20px rgba(0,0,0,.16)}
 .s-type-list:before{position:absolute;top:-1pc;left:20px;content:'';display:block;width:0;height:0;border:10px solid transparent;border-bottom-color:#fff}
-.s-type-list label{display:block;font-size:15px;text-align:center;font-weight:normal;margin-bottom:0;padding:2px 0;cursor:pointer;transition:.3s}
+.s-type-list label{display:block;font-size:14px;text-align:center;font-weight:normal;margin-bottom:0;padding:2px 0;cursor:pointer;transition:.3s;line-height:1.5}
 .s-type-list label:hover{background:rgba(136,136,136,.05)}
 .s-type-list .tile-lg{color:#fff;width:3pc;height:3pc;font-size:1.25rem;line-height:3rem;border-radius:.3rem;display:block;margin:auto}
 .s-type:hover .s-type-list{display:block}
@@ -12,7 +12,7 @@
 .search-type input:checked+label,.search-type input:hover+label{background-color:#fff}
 .search-modal #search .search-select,.search-modal .search-type input:checked+label,.search-modal .search-type input:hover+label{background-color:rgba(126,126,126,.1)}
 
-.header-big{position:relative;margin-top:-75px;padding-top:30px;padding-bottom:60px}
+.header-big{position:relative;margin-top:-30px;padding-top:5px;padding-bottom:5px}
 .header-big.bg-gradual:before{content: "";position: absolute;left: 0;height: 80px;right: 0;bottom: 0;background-image: linear-gradient(to top,#f9f9f9 0%,transparent 80%);transition:.3s}
 .header-big.css-img,.header-big.css-bing{background-color:#1b1d1f;background-size:cover;background-position:cover}
 .header-big.canvas-fx{background-color:#1b1d1f}
@@ -40,7 +40,7 @@
 .header-big .s-type-list:before{display:none}
 .header-big .s-type{position:inherit;top:inherit;left:inherit;z-index:inherit;width:auto}
 .header-big .s-type-list label{position:relative;display:inline-block}
-.header-big .s-type-list label span{display:block;padding:10px 14px;color:#20272b;background-color:#f0f0f0;border-radius:999px;text-shadow:none}
+.header-big .s-type-list label span{display:block;padding:1px 7px;color:#20272b;background-color:#f0f0f0;border-radius:999px;text-shadow:none;font-size:12px;line-height:1.1}
 .io-grey-mode .header-big .s-type-list label span{color:#20272b; font-weight: 500;}
 .io-black-mode .header-big .s-type-list label span{color:#fff; background-color:#404040;}
 .header-big .s-type-list label:not(.active)::after{content:'';height:4px;width:4px;border-radius:2px;position:absolute;left:50%;bottom:5px;margin-left:-2px;background-color:rgba(255,255,255,0);transition:.3s}
@@ -48,7 +48,7 @@
 .header-big .s-type-list label:not(.active),.header-big:not(.no-bg) .search-type label{opacity:.7;transition:opacity .3s}
 .header-big .s-type-list label:not(.active):hover,.header-big:not(.no-bg) .search-type label:hover{opacity:1}
 .header-big .search-type input:checked+label{opacity:1}
-.header-big #search-text{border-radius:50px;color:#20272b;border:1px solid #e5e7eb;padding:9px 20px;background-color:#f0f0f0;}
+.header-big #search-text{border-radius:40px;color:#20272b;border:1px solid #e5e7eb;padding:4px 12px;background-color:#f0f0f0;font-size:13px;height:36px;}
 .io-grey-mode .header-big #search-text{color:#20272b; background-color:#f0f0f0;}
 .io-black-mode .header-big #search-text{color:#fff; background-color:#2c2e2f;}
 
@@ -74,7 +74,7 @@
 .header-big .search-type li.menu-item a{display:inline-block;color:#20272b;background-color:#f0f0f0;border-radius:999px!important;text-shadow:none;padding:6px 12px;line-height:1.5;margin:4px 6px 0}
 .io-grey-mode .header-big .search-type li.menu-item a{color:#20272b; font-weight: 500;}
 .io-black-mode .header-big .search-type li.menu-item a{color:#fff; background-color:#404040;}
-.header-big #search button{position:absolute;top:50%;right:12px;transform:translateY(-50%);background:transparent;border:0!important;width:40px;height:40px;margin:0;border-radius:20px;color:#20272b;line-height:40px;cursor:pointer}
+.header-big #search button{position:absolute;top:50%;right:12px;transform:translateY(-50%);background:transparent;border:0!important;width:32px;height:32px;margin:0;border-radius:16px;color:#20272b;line-height:32px;cursor:pointer;font-size:12px;}
 .io-grey-mode .header-big #search button{color:#20272b;}
 .io-black-mode .header-big #search button{color:#fff;}
 .header-big #search button:hover{background:transparent;box-shadow:none}
@@ -85,13 +85,13 @@
 .header-big:not(.no-bg) .text-muted,.header-big:not(.no-bg) .search-type .menu-item a,.header-big:not(.no-bg) .big-title .h1{color:#fff!important}
 .io-grey-mode .header-big:not(.no-bg) .text-muted,.io-grey-mode .header-big:not(.no-bg) .search-type .menu-item a,.io-grey-mode .header-big:not(.no-bg) .big-title .h1{color:#20272b!important; font-weight: 500;}
 .io-black-mode .header-big:not(.no-bg) .text-muted,.io-black-mode .header-big:not(.no-bg) .search-type .menu-item a,.io-black-mode .header-big:not(.no-bg) .big-title .h1{color:#fff!important}
-.header-big.no-bg #search-text{color:#20272b;border:1px solid #e5e7eb;background-color:#f0f0f0!important}
+.header-big.no-bg #search-text{color:#20272b;border:1px solid #e5e7eb;background-color:#f0f0f0!important;font-size:13px;height:36px;}
 .header-big.no-bg .search-type input:checked+label:before{border-color:rgba(0,0,0,0.2) transparent transparent}
 .header-big .search-type li.menu-item{padding:5px 10px 0 10px}
-@media screen and (min-width:768px){.header-big{padding-top:80px;padding-bottom:60px}.header-big.no-bg{padding-bottom:20px}.header-big .search-type li label,.header-big .search-type li.menu-item{padding:5px 20px}.header-big .s-type-list label span{padding:10px 20px}}
-@media (max-width:767.98px){.header-big{margin-top:-20px;padding-top:72px}}
+@media screen and (min-width:768px){.header-big{padding-top:10px;padding-bottom:5px}.header-big.no-bg{padding-bottom:20px}.header-big .search-type li label,.header-big .search-type li.menu-item{padding:5px 20px}.header-big .s-type-list label span{padding:10px 20px}}
+@media (max-width:767.98px){.header-big{margin-top:-10px;padding-top:20px}}
 .io-black-mode .header-big.bg-gradual:before{background-image: linear-gradient(to top,#1b1d1f 0%,transparent 80%)}
-#search{max-width:800px;position:relative}
+#search{max-width:800px;position:relative;margin-top:15px}
 #search form{position:relative}
 #search-text{z-index:inherit;padding:9pt;height:50px;font-size:1pc;border:0;border-radius:3px;background-color:#fff;transition:.3s}
 #search button{position:absolute;top:0;right:0;background:#313437;border:0;width:60px;height:36px;margin:7px 9pt 0;line-height:36px;border-radius:3px}
