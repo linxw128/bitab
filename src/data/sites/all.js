@@ -210,7 +210,7 @@ export default [
     },
         {
         subId: 'picturetool',
-        url: '/draw/index.html',
+        url: '/draw',
         title: '在线画板',
         description: '在线画板',
         logo: '',
@@ -258,11 +258,11 @@ export default [
         title: 'opensubtitles',
         description: '备选，用的不多，一天20个下载名额',
         logo: '',
-        id: 'fangdai'
+        id: 'opensubtitles'
     },
         {
         subId: 'subtitle',
-        url: 'fangdai/index.html',
+        url: '/fangdai',
         title: '房贷计算器',
         description: '房贷计算器',
         logo: '',
