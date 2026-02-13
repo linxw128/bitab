@@ -6,12 +6,12 @@ import svelte from '@astrojs/svelte';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://bitab.net/',
+  site: 'https://www.bitab.net/',
   integrations: [
     sitemap({
       customPages: [
-        'https://bitab.net/draw/index.html',
-        'https://bitab.net/fangdai/index.html',
+        'https://www.bitab.net/draw/index.html',
+        'https://www.bitab.net/fangdai/index.html',
       ],
     }),
     svelte(),
