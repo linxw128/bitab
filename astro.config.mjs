@@ -10,8 +10,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       customPages: [
-        'https://www.bitab.net/draw/index.html',
-        'https://www.bitab.net/fangdai/index.html',
+        'https://www.bitab.net/draw',
+        'https://www.bitab.net/fangdai',
       ],
     }),
     svelte(),
@@ -25,5 +25,5 @@ export default defineConfig({
     service: sharpImageService()
   },
   output: 'static',
-  adapter: vercel()
+  // adapter: vercel()
 });
