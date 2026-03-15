@@ -35,7 +35,7 @@ const categoryData = Object.values(CATEGORY_CONFIG).flatMap((categoryInfo) => {
 });
 ---
 
-<Layout 
+<Layout
   SITE_TITLE={SITE_TITLE}
   SITE_DESCRIPTION={SITE_DESCRIPTION}
   SITE_FAVICON={SITE_FAVICON}
@@ -44,13 +44,46 @@ const categoryData = Object.values(CATEGORY_CONFIG).flatMap((categoryInfo) => {
     <!-- <LcdClock /> -->
     <Search />
   </div>
-  {categoryData.map((data) => (
-    <CategorySection 
-      category={data.id}
-      subCategoryName={data.name}
-      subCategoryIcon={data.icon}
-      sites={data.sites}
-    />
-  ))}
- 
+  
+  <div class="home-layout">
+    <div class="main-content-area">
+      {categoryData.map((data) => (
+        <CategorySection
+          category={data.id}
+          subCategoryName={data.name}
+          subCategoryIcon={data.icon}
+          sites={data.sites}
+        />
+      ))}
+    </div>
+    
+    <aside class="ads-sidebar">
+      <div class="ads-container">
+        <!-- Google Ads 广告位 -->
+        <div class="ad-slot ad-slot-vertical">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-1436104362730238"
+               data-ad-slot="YOUR_AD_SLOT_ID"
+               data-ad-format="auto"
+               data-full-width-responsive="false"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        
+        <!-- 可选：第二个广告位 -->
+        <!--
+        <div class="ad-slot ad-slot-square">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-1436104362730238"
+               data-ad-slot="YOUR_SECOND_AD_SLOT_ID"
+               data-ad-format="auto"
+               data-full-width-responsive="false"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        -->
+      </div>
+    </aside>
+  </div>
+
 </Layout>

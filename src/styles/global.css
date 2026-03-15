@@ -564,3 +564,103 @@ body.has-content-bg .page-container, body.has-content-bg .main-content{position:
 
 .io-black-mode.has-content-bg .card,.io-black-mode.has-content-bg .block{background:rgba(44,46,47,0.75)!important}
 .category-section h4 .icon-fw, .category-section h4 .icon-lg{position:relative;top:2px}
+
+/*--------------------------------------------------------------
+## Google Ads 广告位布局
+--------------------------------------------------------------*/
+/* 主页整体布局 - 桌面端双列 */
+@media (min-width: 1200px) {
+  .home-layout {
+    display: flex;
+    gap: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .main-content-area {
+    flex: 1;
+    min-width: 0; /* 允许内容收缩 */
+  }
+  
+  .ads-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+  }
+  
+  .ads-container {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .ad-slot {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .io-black-mode .ad-slot {
+    background: rgba(44, 46, 47, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* 竖直广告位 (160x600 或 300x600) */
+  .ad-slot-vertical {
+    min-height: 600px;
+  }
+  
+  /* 方形广告位 (300x250) */
+  .ad-slot-square {
+    min-height: 250px;
+  }
+}
+
+/* 平板和移动端 - 隐藏或调整广告位 */
+@media (max-width: 1199.98px) {
+  .home-layout {
+    display: block;
+    padding: 15px;
+  }
+  
+  .ads-sidebar {
+    display: none; /* 小屏幕隐藏广告，避免遮挡内容 */
+  }
+  
+  /* 或者将广告放在内容底部（可选） */
+  /*
+  .ads-sidebar {
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .ads-container {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .ad-slot {
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .io-black-mode .ad-slot {
+    background: #2c2e2f;
+  }
+  */
+}
